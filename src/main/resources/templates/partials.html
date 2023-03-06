@@ -11,8 +11,32 @@
     </header>
     <nav th:fragment="navbar">
         <a href="/" class="logo">
-
+            <span>Sandlot</span> Connect
         </a>
+        <ul class="nav-container" id="nav">
+            <li><a href="/" class="nav-links nav-text">Home</a></li>
+            <li>
+                <a href="/about-us" class="nav-links nav-text">About us</a>
+            </li>
+            <li>
+                <a href="/teams" class="nav-links nav-text">Teams</a>
+            </li>
+            <li sec:authorize="!isAuthenticated()">
+                <a class="nav-links nav-text" href="/register">Register</a>
+            </li>
+            <li sec:authorize="!isAuthenticated()">
+                <a class="nav-links nav-text" href="/login">Login</a>
+            </li>
+<!--            <li>-->
+<!--                <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">-->
+<!--                    <button class="btn btn-link" style="margin-top: 8px">Logout</button>-->
+<!--                </form>-->
+<!--            </li>-->
+        </ul>
     </nav>
+    <footer th:fragment="footer" th:class="footer">
+        <p>&copy; 2023 Sandlot Connect</p>
+    </footer>
+    <script th:fragment="js" th:src="@{/js/script.js}"></script>
 </body>
 </html>
