@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head (Teams)">
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:fragment="header (header)">
+    <h1 th:text="${header}">Sandlot Connect</h1>
+</header>
+<nav th:fragment="navbar">
+    <a href="/" class="logo"></a>
+    <img src="/static/img/tabernaclefamily.jpeg" alt="Red Dawgs">
+    <figcaption>Tabernacle Family</figcaption>
+    <img src="/static/img/cookstownbigdevils.jpg" alt="Red Dawgs">
+    <figcaption>Cookstown Big Devils</figcaption>
+    <img src="/static/img/red-dawgs.jpg" alt="Red Dawgs">
+    <figcaption>Camden Red Dawgs</figcaption>
+</nav>
+</body>
+</html>
