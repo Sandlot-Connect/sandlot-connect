@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head (title)">
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header th:fragment="header (header)">
+      <h1 th:text="${header}">Sandlot Connect</h1>
+    </header>
+    <nav th:fragment="navbar">
+        <a href="/" class="logo">
+
+        </a>
+    </nav>
+</body>
+</html>
