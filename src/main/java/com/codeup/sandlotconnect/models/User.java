@@ -12,7 +12,10 @@ public class User {
     private long id;
 
     @Column(nullable = false, unique = true)
-    private String email;
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
 
     @Column(nullable = false)
     private String firstName;
@@ -45,8 +48,16 @@ public class User {
     public User() {
     }
 
-    public User(String email, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, List<Team> captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
-        this.email = email;
+    public User(User copy) {
+        id = copy.id;
+        username = copy.username;
+        password = copy.password;
+    }
+
+    public User(long id, String username, String password, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, List<Team> captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.isCaptain = isCaptain;
@@ -58,9 +69,9 @@ public class User {
         this.requests = requests;
     }
 
-    public User(long id, String email, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, List<Team> captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
-        this.id = id;
-        this.email = email;
+    public User(String username, String password, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, List<Team> captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
+        this.username = username;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.isCaptain = isCaptain;
@@ -80,12 +91,20 @@ public class User {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
