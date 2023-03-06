@@ -1,5 +1,8 @@
 package com.codeup.sandlotconnect.repositories;
 
-public interface PostsRepository extends JpaRepository<Posts, Long>{
+import com.codeup.sandlotconnect.models.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PostsRepository extends JpaRepository<Post, Long> {
 
 }

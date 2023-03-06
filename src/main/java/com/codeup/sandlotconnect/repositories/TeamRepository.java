@@ -1,5 +1,8 @@
 package com.codeup.sandlotconnect.repositories;
 
-public interface TeamRepository extends JpaRepository<Team, Long>{
+import com.codeup.sandlotconnect.models.Team;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TeamRepository extends JpaRepository<Team, Long> {
 
 }

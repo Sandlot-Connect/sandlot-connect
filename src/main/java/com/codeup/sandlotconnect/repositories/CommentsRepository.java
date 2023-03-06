@@ -1,5 +1,8 @@
 package com.codeup.sandlotconnect.repositories;
 
-public interface CommentsRepository extends JpaRepository<Comments, Long>{
+import com.codeup.sandlotconnect.models.Comment;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CommentsRepository extends JpaRepository<Comment, Long> {
 
 }

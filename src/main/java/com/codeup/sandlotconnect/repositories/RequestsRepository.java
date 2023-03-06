@@ -1,5 +1,8 @@
 package com.codeup.sandlotconnect.repositories;
 
-public interface RequestsRepository extends JpaRepository<Requests, Long>{
+import com.codeup.sandlotconnect.models.Request;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RequestsRepository extends JpaRepository<Request, Long> {
 
 }
