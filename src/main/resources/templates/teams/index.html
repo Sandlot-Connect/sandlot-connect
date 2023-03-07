@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:fragment="head (Teams)">
-    <meta charset="UTF-8">
-    <title th:text="${title}"></title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+<head th:replace="partials :: head ('Welcome to my blog')">
 </head>
 <body>
-<header th:fragment="header (header)">
-    <h1 th:text="${header}">Sandlot Connect</h1>
-</header>
-<nav th:fragment="navbar">
-    <a href="/" class="logo"></a>
-</nav>
-<h1>TEAMS IN THE SANDLOT CONNECT LEAGUE</h1>
-<img src="/static/img/tabernaclefamily.jpeg" alt="Red Dawgs">
-<figcaption>Tabernacle Family</figcaption>
-<img src="/static/img/cookstownbigdevils.jpg" alt="Red Dawgs">
-<figcaption>Cookstown Big Devils</figcaption>
-<img src="/static/img/red-dawgs.jpg" alt="Red Dawgs">
-<figcaption>Camden Red Dawgs</figcaption>
+<nav th:replace="partials :: navbar"></nav>
+<div class="main-container">
+    <h1>TEAMS IN THE SANDLOT CONNECT LEAGUE</h1>
+    <div th:each="team : ${teams}">
+        <h1 th:text="${team.name}"></h1>
+        <h3 th:text="${team.city}, ${team.state}"></h3>
+        <h3 th:text="${team.captain}"></h3>
+    </div>
+    <div class="text-container"></div>
+</div>
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: js"></div>
 </body>
 </html>
