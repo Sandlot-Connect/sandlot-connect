@@ -15,6 +15,9 @@ public class User {
     private String username;
 
     @Column(nullable = false)
+    private String description;
+
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
@@ -52,6 +55,27 @@ public class User {
         id = copy.id;
         username = copy.username;
         password = copy.password;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        isCaptain = copy.isCaptain;
+        profilePictureUrl = copy.profilePictureUrl;
+        description = copy.description;
+    }
+
+    public User(long id, String username, String description, String password, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, List<Team> captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
+        this.id = id;
+        this.username = username;
+        this.description = description;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.isCaptain = isCaptain;
+        this.profilePictureUrl = profilePictureUrl;
+        this.team = team;
+        this.captainOfTeam = captainOfTeam;
+        this.posts = posts;
+        this.comments = comments;
+        this.requests = requests;
     }
 
     public User(long id, String username, String password, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, List<Team> captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
@@ -97,6 +121,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getPassword() {

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head (title)">
     <meta charset="UTF-8">
-    <title th:text="|${title}|"></title>
+    <title th:text="${title}"></title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -27,11 +27,11 @@
             <li sec:authorize="!isAuthenticated()">
                 <a class="nav-links nav-text" href="/login">Login</a>
             </li>
-<!--            <li>-->
-<!--                <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">-->
-<!--                    <button class="btn btn-link" style="margin-top: 8px">Logout</button>-->
-<!--                </form>-->
-<!--            </li>-->
+            <li>
+                <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
+                    <button class="btn btn-link" style="margin-top: 8px">Logout</button>
+                </form>
+            </li>
         </ul>
     </nav>
     <footer th:fragment="footer" th:class="footer">
