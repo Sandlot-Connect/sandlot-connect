@@ -1,7 +1,6 @@
 package com.codeup.sandlotconnect.services;
 
 import com.codeup.sandlotconnect.models.User;
-//import com.codeup.sandlotconnect.models.UserWithRoles;
 import com.codeup.sandlotconnect.models.UserWithRoles;
 import com.codeup.sandlotconnect.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;

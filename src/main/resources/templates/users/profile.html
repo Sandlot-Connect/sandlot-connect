@@ -6,7 +6,7 @@
 <nav th:replace="partials :: navbar"></nav>
 <div class="main-container">
   <div class="text-container">
-    <h1>Home</h1>
+    <h1 th:text="|Howdy, ${#authentication.principal.username}!|"></h1>
   </div>
   <footer th:replace="partials :: footer"></footer>
 </div>
