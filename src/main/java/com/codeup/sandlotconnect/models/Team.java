@@ -29,6 +29,7 @@ public class Team {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
     private List<User> users;
 
+
     @ManyToOne
     @JoinColumn(name = "captain_id")
     private User captain;
@@ -43,6 +44,13 @@ public class Team {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public Team(long id, String name, String description, User captain) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.captain = captain;
     }
 
     public Team(long id, String name, String description, String city, String state) {
