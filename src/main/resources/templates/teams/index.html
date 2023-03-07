@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="partials :: head ('Welcome to my blog')">
+<head th:replace="~{partials :: head ('Welcome to my blog')}">
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <div class="main-container">
     <h1>TEAMS IN THE SANDLOT CONNECT LEAGUE</h1>
     <div th:each="team : ${teams}">
-        <h1 th:text="${team.name}"></h1>
-        <h3 th:text="${team.city}, ${team.state}"></h3>
-        <h3 th:text="${team.captain}"></h3>
+        <a th:href="@{/teams/{id} (id = ${team.id})}"><h1 th:text="${team.name}"></h1></a>
     </div>
     <div class="text-container"></div>
 </div>
