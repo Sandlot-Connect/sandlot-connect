@@ -20,16 +20,21 @@
             <label for="description">About me</label>
             <textarea id="description" th:field="*{description}"></textarea>
 
-
+<!--            <label for="profile-pic">Profile Picture</label>-->
+<!--            <input id="profile-pic" type="file" th:field="*{profilePictureUrl}" />-->
 
             <label for="password">Password</label>
             <input id="password" type="password" th:field="*{password}" />
 
             <input value="Submit" type="submit" />
         </form>
+<!--        <input type="hidden" id="apiKey" th:value="${apiKey}">-->
     </div>
     <footer th:replace="partials :: footer"></footer>
 </div>
+<!--<script>const API_KEY = document.getElementById("apiKey").value;-->
+<!--console.log(API_KEY);-->
+<!--</script>-->
 <div th:replace="partials :: js"></div>
 </body>
 </html>
