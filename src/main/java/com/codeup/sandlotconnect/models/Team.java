@@ -39,6 +39,12 @@ public class Team {
     public Team() {
     }
 
+    public Team(long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
     public Team(long id, String name, String description, String city, String state) {
         this.id = id;
         this.name = name;
@@ -57,6 +63,14 @@ public class Team {
         this.users = users;
         this.captain = captain;
         this.requests = requests;
+    }
+
+    public Team(String name, String description, String city, String state, String logoUrl) {
+        this.name = name;
+        this.description = description;
+        this.city = city;
+        this.state = state;
+        this.logoUrl = logoUrl;
     }
 
     public Team(String name, String description, String city, String state, String logoUrl, List<User> users, User captain, List<Request> requests) {
