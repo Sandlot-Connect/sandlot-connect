@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class TeamController {
@@ -22,14 +21,14 @@ public class TeamController {
 
     @GetMapping("/teams")
     public String showTeams(Model model) {
-        ArrayList<Team> teams = new ArrayList<>();
+        List<Team> teams = teamDao.findAll();
         model.addAttribute("teams", teams);
         return "teams/index";
     }
 
     @GetMapping("/teams/{id}")
     public String showTeam(@PathVariable long id, Model model) {
-        Team team = new Team(id, "Test team", "This is a test team");
+        Team team = teamDao.findTeamById(id);
         model.addAttribute("team", team);
         return "teams/show";
     }
