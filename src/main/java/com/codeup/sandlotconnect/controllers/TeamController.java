@@ -34,13 +34,15 @@ public class TeamController {
     }
 
     @GetMapping("/teams/create")
-    public String createTeamForm() {
+    public String createTeamForm(Model model) {
+        List<Team> teams = teamDao.findAll();
         return "teams/create";
     }
 
     @PostMapping("/teams/create")
-    public String createTeam(@RequestParam String name, @RequestParam String description, @RequestParam String city, @RequestParam String state, String logoUrl) {
-        Team team = new Team(name, description, city, state, logoUrl);
+    public String createTeam(@RequestParam String name, @RequestParam String description, @RequestParam String city, @RequestParam String state) {
+        Team team = new Team(name, description, city, state);
+        System.out.println(team);
         teamDao.save(team);
         return "redirect:/teams";
     }
