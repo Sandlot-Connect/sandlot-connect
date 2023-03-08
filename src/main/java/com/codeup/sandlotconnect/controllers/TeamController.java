@@ -3,6 +3,7 @@ package com.codeup.sandlotconnect.controllers;
 import com.codeup.sandlotconnect.models.Team;
 import com.codeup.sandlotconnect.models.User;
 import com.codeup.sandlotconnect.repositories.TeamRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +43,8 @@ public class TeamController {
     @PostMapping("/teams/create")
     public String createTeam(@RequestParam String name, @RequestParam String description, @RequestParam String city, @RequestParam String state) {
         Team team = new Team(name, description, city, state);
-        System.out.println(team);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        team.setCaptain(user);
         teamDao.save(team);
         return "redirect:/teams";
     }

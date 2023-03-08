@@ -29,7 +29,6 @@ public class Team {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
     private List<User> users;
 
-
     @ManyToOne
     @JoinColumn(name = "captain_id")
     private User captain;
