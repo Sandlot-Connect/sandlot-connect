@@ -10,11 +10,10 @@
         <h2>Team Name: <span th:text="${team.name}"></span></h2>
         <h2>Team City: <span th:text="${team.city}"></span></h2>
         <h2>Team Captain:  <span th:text="${team.captain.firstName}"></span></h2>
-        <h2>Players:  <span th:each="${team.users}"></span></h2>
+        <h2>Players:  <span th:each="user : ${team.users}"><p th:text="${user.firstName}"></p></span></h2>
     </div>
     <div class="text-container"></div>
 </div>
-<a href="/teams/create">Create A Team</a>
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: js"></div>
 </body>

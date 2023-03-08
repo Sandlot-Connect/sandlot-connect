@@ -8,9 +8,11 @@
     <h1>TEAMS IN THE SANDLOT CONNECT LEAGUE</h1>
     <div th:each="team : ${teams}">
         <a th:href="@{/teams/{id} (id = ${team.id})}"><h1 th:text="${team.name}"></h1></a>
+        <a sec:authorize="isAuthenticated()" href="AAAAAAAAAAAAAA">Request To Join A Team</a><br>
     </div>
     <div class="text-container"></div>
 </div>
+<a href="/teams/create">Create A Team</a>
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: js"></div>
 </body>
