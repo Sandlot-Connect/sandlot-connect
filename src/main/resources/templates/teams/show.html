@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{partials :: head ('Welcome to my blog')}">
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<div class="main-container">
+    <h1>HERE ARE THE <span th:text="${team.name}"></span> BASEBALL TEAM!!</h1>
+    <div>
+        <h2>Team Name: <span th:text="${team.name}"></span></h2>
+        <h2>Team City: <span th:text="${team.city}"></span></h2>
+        <h2>Team Captain:  <span th:text="${team.captain.firstName}"></span></h2>
+        <h2>Players:  <span th:each="user : ${team.users}"><p th:text="${user.firstName}"></p></span></h2>
+    </div>
+    <div class="text-container"></div>
+</div>
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: js"></div>
+</body>
+</html>
