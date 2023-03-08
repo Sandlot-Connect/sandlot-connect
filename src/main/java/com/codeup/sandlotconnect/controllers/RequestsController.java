@@ -7,9 +7,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RequestsController {
-@PostMapping("/teams/index")
-    public String showRequest(Model model) {
-
-        return "teams/index";
-    }
+//    @GetMapping("/teams/index")
+//    public String showRequest(Model model) {
+//
+//        return "teams";
+//    }
+//@PostMapping("/teams/index")
+//    public String showRequest(Model model) {
+//
+//        return "teams/index";
+//    }
 }

@@ -81,6 +81,13 @@ public class Team {
         this.logoUrl = logoUrl;
     }
 
+    public Team(String name, String description, String city, String state) {
+        this.name = name;
+        this.description = description;
+        this.city = city;
+        this.state = state;
+    }
+
     public Team(String name, String description, String city, String state, String logoUrl, List<User> users, User captain, List<Request> requests) {
         this.name = name;
         this.description = description;
