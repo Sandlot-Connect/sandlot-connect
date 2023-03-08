@@ -6,12 +6,17 @@ import com.codeup.sandlotconnect.models.User;
 import com.codeup.sandlotconnect.repositories.PostsRepository;
 import com.codeup.sandlotconnect.repositories.TeamRepository;
 import com.codeup.sandlotconnect.repositories.UserRepository;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -29,7 +34,7 @@ public class PostsController {
     public String showTeamPosts(@PathVariable long id, Model model) {
         Team team = teamDao.findTeamById(id);
         List<User> users = userDao.findAllByTeam(team);
-        List<Post> posts = postDao.findAll();
+        List<Post> posts = postDao.findAll(Sort.by(Sort.Direction.DESC, "timestamp"));
         List<Post> filteredPosts = new ArrayList<>();
         for (Post post : posts) {
             for (User user : users) {
@@ -44,4 +49,17 @@ public class PostsController {
         model.addAttribute("posts", filteredPosts);
         return "posts/team-posts";
     }
+
+    @PostMapping("/teams/{id}/posts/create")
+    public String createPost(@PathVariable long id, Model model, @RequestParam String title, @RequestParam String content) {
+        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        Post post = new Post();
+        post.setTitle(title);
+        post.setContent(content);
+        post.setTimestamp(new Date());
+        post.setUser(user);
+        postDao.save(post);
+        return "redirect:/teams/" + id + "/posts";
+    }
+
 }
