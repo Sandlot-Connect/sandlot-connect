@@ -9,7 +9,8 @@
     <h1 th:text="|Howdy, ${#authentication.principal.firstName}!|"></h1>
     <h2>Edit profile</h2>
     <label for="username">Email Address</label>
-    <input id="username" name="username" th:value="${#authentication.principal.username}" />
+    <input disabled id="username" name="username" th:value="${#authentication.principal.username}" />
+
     <form th:action="@{/profile/edit}" method="POST" th:object="${user}">
       <label for="first-name">First Name</label>
       <input id="first-name" name="firstName" th:value="${#authentication.principal.firstName}" th:field="*{firstName}" />
