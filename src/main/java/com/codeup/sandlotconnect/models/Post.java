@@ -31,6 +31,13 @@ public class Post {
     public Post() {
     }
 
+    public Post(String title, String content, Date timestamp, User user) {
+        this.title = title;
+        this.content = content;
+        this.timestamp = timestamp;
+        this.user = user;
+    }
+
     public Post(long id, String title, String content, Date timestamp, User user, List<Comment> comments) {
         this.id = id;
         this.title = title;
