@@ -61,5 +61,4 @@ public class PostsController {
         postDao.save(post);
         return "redirect:/teams/" + id + "/posts";
     }
-
 }

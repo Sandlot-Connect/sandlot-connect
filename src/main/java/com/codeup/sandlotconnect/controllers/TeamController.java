@@ -1,8 +1,11 @@
 package com.codeup.sandlotconnect.controllers;
 
+import com.codeup.sandlotconnect.models.Request;
 import com.codeup.sandlotconnect.models.Team;
 import com.codeup.sandlotconnect.models.User;
+import com.codeup.sandlotconnect.repositories.RequestsRepository;
 import com.codeup.sandlotconnect.repositories.TeamRepository;
+import com.codeup.sandlotconnect.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +18,13 @@ import java.util.List;
 @Controller
 public class TeamController {
     private final TeamRepository teamDao;
+    private final UserRepository userDao;
+    private final RequestsRepository requestDao;
 
-    public TeamController(TeamRepository teamDao) {
+    public TeamController(TeamRepository teamDao, UserRepository userDao, RequestsRepository requestDao) {
         this.teamDao = teamDao;
+        this.userDao = userDao;
+        this.requestDao = requestDao;
     }
 
     @GetMapping("/teams")
@@ -40,11 +47,29 @@ public class TeamController {
         return "teams/create";
     }
 
+
+    @PostMapping("/teams/{id}/notifications")
+    public String joinNotification(@PathVariable long id, Model model) {
+        Team team = teamDao.findTeamById(id);
+        System.out.println(team.getId());
+        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        System.out.println(user.getId());
+        Request req = new Request();
+        req.setStatus("Pending");
+        req.setTeam(team);
+        req.setUser(user);
+        requestDao.save(req);
+        return "redirect:/teams";
+    }
+
+
     @PostMapping("/teams/create")
     public String createTeam(@RequestParam String name, @RequestParam String description, @RequestParam String city, @RequestParam String state) {
         Team team = new Team(name, description, city, state);
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         team.setCaptain(user);
+        user.setTeam(team);
+        user.setCaptain(true);
         teamDao.save(team);
         return "redirect:/teams";
     }
