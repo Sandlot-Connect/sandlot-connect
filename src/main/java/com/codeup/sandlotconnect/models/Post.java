@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "posts")
 public class Post {
+    public boolean editing = false;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -101,5 +102,13 @@ public class Post {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public boolean isEditing() {
+        return editing;
+    }
+
+    public void setEditing(boolean editing) {
+        this.editing = editing;
     }
 }
