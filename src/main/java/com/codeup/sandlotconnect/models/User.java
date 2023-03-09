@@ -36,8 +36,8 @@ public class User {
     @JoinColumn(name = "team_id")
     private Team team;
 
-    @OneToMany(mappedBy = "captain")
-    private List<Team> captainOfTeam;
+    @OneToOne(mappedBy = "captain")
+    private Team captainOfTeam;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
@@ -62,7 +62,7 @@ public class User {
         description = copy.description;
     }
 
-    public User(long id, String username, String description, String password, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, List<Team> captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
+    public User(long id, String username, String description, String password, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, Team captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
         this.id = id;
         this.username = username;
         this.description = description;
@@ -78,7 +78,7 @@ public class User {
         this.requests = requests;
     }
 
-    public User(long id, String username, String password, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, List<Team> captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
+    public User(long id, String username, String password, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, Team captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -93,7 +93,7 @@ public class User {
         this.requests = requests;
     }
 
-    public User(String username, String password, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, List<Team> captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
+    public User(String username, String password, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, Team captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -179,11 +179,11 @@ public class User {
         this.team = team;
     }
 
-    public List<Team> getCaptainOfTeam() {
+    public Team getCaptainOfTeam() {
         return captainOfTeam;
     }
 
-    public void setCaptainOfTeam(List<Team> captainOfTeam) {
+    public void setCaptainOfTeam(Team captainOfTeam) {
         this.captainOfTeam = captainOfTeam;
     }
 
