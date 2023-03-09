@@ -67,3 +67,26 @@ footer p {
     margin: 0;
     font-size: 0.8rem;
 }
+
+.title-input {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+.content-textarea {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.title-label {
+    display: none;
+}
+
+.content-label {
+    display: none;
+}
+
+.save-button {
+    display: none;
+}

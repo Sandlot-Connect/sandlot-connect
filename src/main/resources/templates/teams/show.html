@@ -5,12 +5,13 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <div class="main-container">
-    <h1>HERE ARE THE <span th:text="${team.name}"></span> BASEBALL TEAM!!</h1>
+    <h1>HERE IS THE <span th:text="${team.name}"></span> BASEBALL TEAM!!</h1>
     <div>
         <h2>Team Name: <span th:text="${team.name}"></span></h2>
         <h2>Team City: <span th:text="${team.city}"></span></h2>
         <h2>Team Captain:  <span th:text="${team.captain.firstName}"></span></h2>
         <h2>Players:  <span th:each="user : ${team.users}"><p th:text="${user.firstName}"></p></span></h2>
+        <a th:href="@{/teams/{id}/posts (id=${team.id})}">Posts</a>
     </div>
     <div class="text-container"></div>
 </div>

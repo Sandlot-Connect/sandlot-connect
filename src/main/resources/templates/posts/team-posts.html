@@ -6,11 +6,8 @@
 <nav th:replace="partials :: navbar"></nav>
 <div class="main-container">
     <div class="text-container">
-    <h1><span th:text="${team.name}"></span></h1>
+    <h1><span th:text="${team.city} + ' ' + ${team.name}"></span></h1>
     <div>
-        <h2>Team Name: <span th:text="${team.name}"></span></h2>
-        <h2>Team City: <span th:text="${team.city}"></span></h2>
-        <h2>Team Captain:  <span th:text="${team.captain.firstName}"></span></h2>
         <ul>
            <li th:each="user : ${team.users}">
                <button th:text="${user.firstName}" type="button" class="btn btn-secondary"
@@ -36,10 +33,26 @@
 
         <ul>
             <li th:each="post : ${posts}">
-                <div>
-                    <h3><span th:text="${post.title}"></span></h3>
-                    <p><span th:text="${post.content}"></span></p>
-                    <p>By: <span th:text="${post.user.firstName}"></span> at <span th:text="${post.timestamp}"></span></p>
+                <div th:id="'post-' + ${post.id}">
+
+                    <h3 th:text="${post.title}" class="post-title"></h3>
+                    <form th:action="@{/teams/{id}/posts/{postId}/edit(id=${team.id}, postId=${post.id})}" method="post" class="save-form">
+                        <label class="title-label" for="post-title">Title</label>
+                        <input th:value="${post.title}" id="post-title" name="post-title" type="text" class="title-input">
+
+                        <p th:text="${post.content}" class="post-content"></p>
+                        <label class="content-label" for="post-content">Content</label>
+                        <textarea th:text="${post.content}" id="post-content" name="post-content" rows="5" type="text" class="content-textarea"></textarea>
+
+                        <p th:text="'Created By ' + ${post.user.firstName} + ' at ' + ${post.timestamp}"></p>
+
+                        <button class="btn btn-light save-button" th:if="${post.user.username} == ${#authentication.principal.username}">Save</button>
+                    </form>
+                    <button th:if="${post.user.username == #authentication.principal.username}" th:onclick="'toggleEdit(' + ${post.id} + ')'" class="btn btn-secondary edit-button">Edit</button>
+
+                    <form th:action="@{/teams/{id}/posts/{postId}/delete(id=${team.id}, postId=${post.id})}" method="post">
+                        <button class="btn btn-danger" th:if="${post.user.username} == ${#authentication.principal.username}">Delete</button>
+                    </form>
                     <hr>
                 </div>
             </li>
