@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RequestsController {
-//    @GetMapping("/teams/index")
-//    public String showRequest(Model model) {
-//
-//        return "teams";
-//    }
-//@PostMapping("/teams/index")
-//    public String showRequest(Model model) {
-//
-//        return "teams/index";
-//    }
+
+        @GetMapping("/requests")
+        public String showRequests(Model model) {
+            return "requests/index";
+        }
+
+        @PostMapping("/requests/create")
+        public String createRequest() {
+            return "redirect:/requests";
+        }
 }

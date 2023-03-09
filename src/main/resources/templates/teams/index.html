@@ -8,7 +8,9 @@
     <h1>TEAMS IN THE SANDLOT CONNECT LEAGUE</h1>
     <div th:each="team : ${teams}">
         <a th:href="@{/teams/{id} (id = ${team.id})}"><h1 th:text="${team.name}"></h1></a>
-        <a sec:authorize="isAuthenticated()" href="AAAAAAAAAAAAAA">Request To Join This Team</a><br>
+        <form th:action="@{/teams/{id}/notifications (id = ${team.id})}" method="post">
+        <button sec:authorize="isAuthenticated()" th:value="${team.id}">Request To Join This Team</button><br>
+        </form>
     </div>
     <div class="text-container"></div>
 </div>
