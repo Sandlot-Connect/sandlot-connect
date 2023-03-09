@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/about}">About Us</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="about-us">
+        <h2>About Us</h2>
+        <div class="person">
+            <img src="person1.jpg" alt="Person 1">
+            <h3>John Doe</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        </div>
+        <div class="person">
+            <img src="person2.jpg" alt="Person 2">
+            <h3>Jane Smith</h3>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+        </div>
+        <div class="person">
+            <img src="person3.jpg" alt="Person 3">
+            <h3>Mark Johnson</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2023 My Website. All rights reserved.</p>
+</footer>
+
+<div th:replace="partials :: js"></div>
+</body>
+</html>
