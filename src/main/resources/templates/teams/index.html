@@ -9,7 +9,11 @@
     <div th:each="team : ${teams}">
         <a th:href="@{/teams/{id} (id = ${team.id})}"><h1 th:text="${team.name}"></h1></a>
         <form th:action="@{/teams/{id}/notifications (id = ${team.id})}" method="post">
-        <button sec:authorize="isAuthenticated()" th:value="${team.id}">Request To Join This Team</button><br>
+            <button sec:authorize="isAuthenticated()" th:value="${team.id}">Request To Join This Team</button>
+            <br>
+        </form>
+        <form action="@{/teams/{id}/admin}" method="post">
+            <button sec:authorize="isAuthenticated()">Admin Page</button>
         </form>
     </div>
     <div class="text-container"></div>
