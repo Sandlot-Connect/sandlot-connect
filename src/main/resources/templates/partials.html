@@ -20,6 +20,9 @@
                 <a href="/" class="nav-links nav-text">Home</a>
             </li>
             <li sec:authorize="isAuthenticated()">
+                <a th:if="${#authentication.principal.isCaptain}" th:href="@{/teams/{id}/admin(id=${#authentication.principal.team.id})}">Admin page</a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
                 <a th:if="${#authentication.principal.team != null}" th:href="@{/teams/{id}/posts(id=${#authentication.principal.team.id})}" th:text="${#authentication.principal.team.name}" class="nav-links nav-text"></a>
                 <a th:if="${#authentication.principal.team == null}" th:href="@{/teams}">Join or create a team</a>
             </li>

@@ -6,5 +6,5 @@ import com.codeup.sandlotconnect.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RequestsRepository extends JpaRepository<Request, Long> {
-
+    Request findRequestById(long id);
 }
