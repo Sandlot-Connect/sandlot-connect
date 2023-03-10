@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{partials :: head ('Administration Page')}">
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<div class="main-container">
+    <div th:href="@{/teams/{id} (id = ${team.id})}">
+        <h1 th:text="${team.name}"></h1>
+        <form th:action="@{/teams/{id} (id = ${team.id})}" method="post">
+            <h2>Players who have requested to join the team.</h2>
+            <ul>
+                <li th:each="player : ${team.users}">
+                    <p th:text="${player.firstName}"></p>
+                    <p th:text="${player.lastName}"></p>
+                    <p th:text="${player.username}"></p>
+                    <form th:action="@{/teams/{id}/index}" method="post">
+                        <button th:if="${player.captain}"> Accept</button>
+                    </form>
+                    <br><br>
+                    <form th:action="@{/teams/{id}/index}" method="post">
+                        <button th:if="${player.captain}"> Decline</button>
+                    </form>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <div class="text-container"></div>
+</div>
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: js"></div>
+</body>
+</html>

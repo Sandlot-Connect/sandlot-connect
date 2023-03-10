@@ -47,13 +47,29 @@ public class TeamController {
         return "teams/create";
     }
 
+    @GetMapping("/teams/{id}/admin")
+    public String showAdminRequests(@PathVariable long id, Model model) {
+        Team team = teamDao.findTeamById(id);
+        model.addAttribute("team", team);
+        return "teams/admin";
+    }
+
+    @PostMapping("/teams/{id}/admin")
+    public String adminNotification(@PathVariable long id, long requestId, long userId) {
+        Request request = requestDao.getById(requestId);
+        Team team = teamDao.findTeamById(id);
+        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (!user.isCaptain()) {
+            return "redirect:/teams";
+        } else
+        return "redirect:/teams/admin";
+    }
+
 
     @PostMapping("/teams/{id}/notifications")
     public String joinNotification(@PathVariable long id, Model model) {
         Team team = teamDao.findTeamById(id);
-        System.out.println(team.getId());
         User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        System.out.println(user.getId());
         Request req = new Request();
         req.setStatus("Pending");
         req.setTeam(team);
