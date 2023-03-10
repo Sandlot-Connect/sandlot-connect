@@ -98,4 +98,5 @@ public class PostsController {
         return "redirect:/teams/" + id + "/posts";
     }
 
+
 }
