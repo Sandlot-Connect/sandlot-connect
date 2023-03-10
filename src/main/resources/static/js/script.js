@@ -1,35 +1,42 @@
 "use strict";
 
-    function toggleEdit(postId) {
-        let post = document.getElementById("post-" + postId);
-        let editButton = post.querySelector(".edit-button");
-        let titleInput = post.querySelector(".title-input");
-        let contentTextarea = post.querySelector(".content-textarea");
-        let saveButton = post.querySelector(".save-button");
-        let postTitle = post.querySelector(".post-title");
-        let postContent = post.querySelector(".post-content");
-        let titleLabel = post.querySelector(".title-label")
-        let contentLabel = post.querySelector(".content-label")
+function toggleEdit(postId) {
+    let post = document.getElementById("post-" + postId);
+    let editButton = post.querySelector(".edit-button");
+    let titleInput = post.querySelector(".title-input");
+    let contentTextarea = post.querySelector(".content-textarea");
+    let saveButton = post.querySelector(".save-button");
+    let postTitle = post.querySelector(".post-title");
+    let postContent = post.querySelector(".post-content");
+    let titleLabel = post.querySelector(".title-label")
+    let contentLabel = post.querySelector(".content-label")
 
-        if (!post.dataset.editing) {
-            post.dataset.editing = true;
-            titleInput.style.display = "block";
-            contentTextarea.style.display = "block";
-            editButton.style.display = "none";
-            saveButton.style.display = "block";
-            postTitle.style.display = "none";
-            postContent.style.display = "none";
-            titleLabel.style.display = "block";
-            contentLabel.style.display = "block";
-        } else {
-            post.dataset.editing = false;
-            titleInput.style.display = "none";
-            contentTextarea.style.display = "none";
-            editButton.style.display = "inline-block";
-            saveButton.style.display = "none";
-            postTitle.style.display = "block";
-            postContent.style.display = "block";
-            titleLabel.style.display = "none";
-            contentLabel.style.display = "none";
-        }
+    if (!post.dataset.editing) {
+        post.dataset.editing = true;
+        titleInput.style.display = "block";
+        contentTextarea.style.display = "block";
+        editButton.style.display = "none";
+        saveButton.style.display = "block";
+        postTitle.style.display = "none";
+        postContent.style.display = "none";
+        titleLabel.style.display = "block";
+        contentLabel.style.display = "block";
+    } else {
+        post.dataset.editing = false;
+        titleInput.style.display = "none";
+        contentTextarea.style.display = "none";
+        editButton.style.display = "inline-block";
+        saveButton.style.display = "none";
+        postTitle.style.display = "block";
+        postContent.style.display = "block";
+        titleLabel.style.display = "none";
+        contentLabel.style.display = "none";
     }
+}
+
+document.querySelectorAll('.reply-button').forEach(function(button) {
+    button.addEventListener('click', function(e) {
+        var commentForm = e.target.nextElementSibling;
+        commentForm.style.display = (commentForm.style.display === 'none' ? 'block' : 'none');
+    });
+});

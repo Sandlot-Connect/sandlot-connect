@@ -60,6 +60,7 @@ public class User {
         isCaptain = copy.isCaptain;
         profilePictureUrl = copy.profilePictureUrl;
         description = copy.description;
+        team = copy.team;
     }
 
     public User(long id, String username, String description, String password, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, Team captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
