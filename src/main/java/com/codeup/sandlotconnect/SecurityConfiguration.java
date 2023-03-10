@@ -36,12 +36,12 @@ public class SecurityConfiguration {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/profile") // user's home page, it can be any URL
+                .defaultSuccessUrl("/teams") // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
                 .logout()
-                .logoutSuccessUrl("/") // append a query string value
+                .logoutSuccessUrl("/login?logout") // append a query string value
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()

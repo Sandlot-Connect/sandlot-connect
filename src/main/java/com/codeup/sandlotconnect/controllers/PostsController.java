@@ -36,10 +36,14 @@ public class PostsController {
     }
     @GetMapping("/teams/{id}/posts")
     public String showTeamPosts(@PathVariable long id, Model model) {
+        User loggedUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Team team = teamDao.findTeamById(id);
         List<User> users = userDao.findAllByTeam(team);
         List<Post> posts = postDao.findAll(Sort.by(Sort.Direction.DESC, "timestamp"));
         List<Post> filteredPosts = new ArrayList<>();
+        if (!team.getUsers().contains(loggedUser)) {
+            return "redirect:/teams/" + id;
+        }
         for (Post post : posts) {
             for (User user : users) {
                 if (post.getUser().getId() == user.getId()) {
@@ -90,13 +94,27 @@ public class PostsController {
     }
 
     @PostMapping("/teams/{id}/posts/{postId}/comments/create")
-    public String createComment(@PathVariable long id, @PathVariable long postId, @RequestParam String content) {
+    public String createComment(@PathVariable long id, @PathVariable long postId, @RequestParam(name = "comment-content") String content) {
+        Team team = teamDao.findTeamById(id);
         User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Post post = postDao.findPostById(postId);
+        if (!team.getUsers().contains(user)) {
+            return "redirect:/teams/" + id + "/posts";
+        }
         Comment comment = new Comment(content, new Date(), user, post);
         commentDao.save(comment);
         return "redirect:/teams/" + id + "/posts";
     }
 
+    @PostMapping("/teams/{id}/posts/{postId}/comments/{commentId}/delete")
+    public String deleteComment(@PathVariable long id, @PathVariable long postId, @PathVariable long commentId) {
+        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        Post post = postDao.findPostById(postId);
+        Comment comment = commentDao.findCommentById(commentId);
+        if (user.getId() == comment.getUser().getId()) {
+            commentDao.deleteById(commentId);
+        }
+        return "redirect:/teams/" + id + "/posts";
+    }
 
 }
