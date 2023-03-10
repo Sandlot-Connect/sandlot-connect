@@ -5,27 +5,34 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <div class="main-container">
-    <div th:href="@{/teams/{id} (id = ${team.id})}">
+    <div class="text-container">
         <h1 th:text="${team.name}"></h1>
-        <form th:action="@{/teams/{id} (id = ${team.id})}" method="post">
-            <h2>Players who have requested to join the team.</h2>
+        <h2>Players who have requested to join the team.</h2>
+
             <ul>
-                <li th:each="player : ${team.users}">
-                    <p th:text="${player.firstName}"></p>
-                    <p th:text="${player.lastName}"></p>
-                    <p th:text="${player.username}"></p>
-                    <form th:action="@{/teams/{id}/index}" method="post">
-                        <button th:if="${player.captain}"> Accept</button>
-                    </form>
-                    <br><br>
-                    <form th:action="@{/teams/{id}/index}" method="post">
-                        <button th:if="${player.captain}"> Decline</button>
+                <li th:each="request : ${team.requests}">
+                    <form th:action="@{/teams/{id}/admin/{requestId} (id=${team.id}, requestId=${request.id})}" method="post">
+                    <div>
+                        <p th:text="${request.user.firstName} + ' ' + ${request.user.lastName} + ' has requested to join this team'"></p>
+                        <button sec:authorize="isAuthenticated()" th:if="${request.status == 'Pending'} and ${#authentication.principal.isCaptain}" name="status" value="accept" class="btn btn-primary">Accept</button>
+                        <button sec:authorize="isAuthenticated()" th:if="${request.status == 'Pending'} and ${#authentication.principal.isCaptain}" name="status" value="decline" class="btn btn-danger">Decline</button>
+                    </div>
                     </form>
                 </li>
+<!--                <li th:each="player : ${team.requests.user}">-->
+<!--                    <p th:text="${player.firstName}"></p>-->
+<!--                    <p th:text="${player.lastName}"></p>-->
+<!--                    <p th:text="${player.username}"></p>-->
+<!--                    <form th:action="@{/teams/{id}/index}" method="post">-->
+<!--                        <button th:if="${player.captain}"> Accept</button>-->
+<!--                    </form>-->
+<!--                    <br><br>-->
+<!--                    <form th:action="@{/teams/{id}/index}" method="post">-->
+<!--                        <button th:if="${player.captain}"> Decline</button>-->
+<!--                    </form>-->
+<!--                </li>-->
             </ul>
-        </form>
     </div>
-    <div class="text-container"></div>
 </div>
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: js"></div>
