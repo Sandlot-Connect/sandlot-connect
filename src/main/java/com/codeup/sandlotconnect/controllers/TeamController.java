@@ -71,6 +71,9 @@ public class TeamController {
     public String joinNotification(@PathVariable long id, Model model) {
         Team team = teamDao.findTeamById(id);
         User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (team == null) {
+            return "redirect:/teams";
+        }
         Request req = new Request();
         req.setStatus("Pending");
         req.setTeam(team);

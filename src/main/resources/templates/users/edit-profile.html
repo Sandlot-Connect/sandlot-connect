@@ -4,27 +4,37 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<div class="main-container">
-  <div class="text-container">
-    <h1 th:text="|Howdy, ${#authentication.principal.firstName}!|"></h1>
-    <h2>Edit profile</h2>
-    <label for="username">Email Address</label>
-    <input disabled id="username" name="username" th:value="${#authentication.principal.username}" />
+<div class="main-container container">
+    <div class="text-container row">
+        <div class="col-md-8 d-flex flex-column align-items-center">
+            <h1 th:text="|Howdy, ${user.firstName}!|"></h1>
+            <h2>Edit profile</h2>
+            <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
+                <label class="m-2" for="username">Email Address</label>
+                <input disabled id="username" name="username" th:value="${user.username}" />
+            </div>
 
-    <form th:action="@{/profile/edit}" method="POST" th:object="${user}">
-      <label for="first-name">First Name</label>
-      <input id="first-name" name="firstName" th:value="${#authentication.principal.firstName}" th:field="*{firstName}" />
+            <form th:action="@{/profile/edit}" method="POST" th:object="${user}">
+                <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
+                    <label class="m-2" for="first-name">First Name</label>
+                    <input id="first-name" name="firstName" th:value="${user.firstName}" th:field="*{firstName}" />
+                </div>
 
-      <label for="last-name">Last Name</label>
-      <input id="last-name" name="lastName" th:value="${#authentication.principal.lastName}" th:field="*{lastName}" />
+                <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
+                    <label class="m-2" for="last-name">Last Name</label>
+                    <input id="last-name" name="lastName" th:value="${user.lastName}" th:field="*{lastName}" />
+                </div>
 
-      <label for="description">About me</label>
-      <textarea id="description" name="description" th:value="${#authentication.principal.description}" th:field="*{description}"></textarea>
-      <input value="Submit" type="submit" />
-    </form>
-  </div>
-  <footer th:replace="partials :: footer"></footer>
+                <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
+                    <label class="m-2" for="description">About me</label>
+                    <textarea id="description" name="description" th:value="${user.description}" th:field="*{description}"></textarea>
+                </div>
+                <input class="btn btn-primary" value="Submit" type="submit" />
+            </form>
+        </div>
+    </div>
 </div>
+<footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: js"></div>
 </body>
 </html>

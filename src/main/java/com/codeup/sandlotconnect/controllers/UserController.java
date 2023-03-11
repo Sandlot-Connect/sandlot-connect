@@ -42,7 +42,8 @@ public class UserController {
 
     @GetMapping("/profile")
     public String showProfile(Model model) {
-
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
         return "users/profile";
     }
 

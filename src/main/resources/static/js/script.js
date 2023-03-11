@@ -1,5 +1,6 @@
 "use strict";
 
+//toggles visibility of edit form on team-posts
 function toggleEdit(postId) {
     let post = document.getElementById("post-" + postId);
     let editButton = post.querySelector(".edit-button");
@@ -33,10 +34,17 @@ function toggleEdit(postId) {
         contentLabel.style.display = "none";
     }
 }
-
+//Toggle comment reply form on team-posts
 document.querySelectorAll('.reply-button').forEach(function(button) {
     button.addEventListener('click', function(e) {
         var commentForm = e.target.nextElementSibling;
         commentForm.style.display = (commentForm.style.display === 'none' ? 'block' : 'none');
     });
+});
+//hides request button on teams index page if there is already a pending request
+$(document).ready(function() {
+    if ($('.cancel-request').length) {
+        $('.request-button').css("display", "none");
+        $('.request-form').css("display", "none");
+    }
 });
