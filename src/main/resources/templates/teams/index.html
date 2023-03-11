@@ -12,9 +12,6 @@
             <button sec:authorize="isAuthenticated()" th:value="${team.id}">Request To Join This Team</button>
             <br>
         </form>
-        <form action="@{/teams/{id}/admin}" method="post">
-            <button sec:authorize="isAuthenticated()">Admin Page</button>
-        </form>
     </div>
     <div class="text-container"></div>
 </div>
