@@ -95,14 +95,14 @@ public class TeamController {
     }
 
     @PostMapping("/teams/{id}/leave")
-    public String removePlayer(@PathVariable long id, @PathVariable long userId) {
+    public String removePlayer(@PathVariable long id) {
         User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Team team = teamDao.findTeamById(id);
         if (user.isCaptain()) {
             user.setCaptain(false);
         }
         user.setTeam(null);
-        teamDao.save(team);
-        return "redirect:/teams/show";
+        userDao.save(user);
+        return "redirect:/teams";
     }
 }
