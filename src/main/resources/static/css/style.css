@@ -90,3 +90,113 @@ footer p {
 .save-button {
     display: none;
 }
+/* Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+}
+
+/* Navbar Styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3b5998;
+    color: #fff;
+    padding: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li:not(:last-child) {
+    margin-right: 1rem;
+}
+
+/* Main Container Styles */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.text-container {
+    text-align: center;
+}
+
+.text-container h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #e9ebee;
+    color: #65676b;
+    text-align: center;
+    padding: 1rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* About Us Styles */
+.about-us {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto;
+    max-width: 1000px;
+}
+
+.person {
+    background-color: #fff;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin: 1rem;
+    padding: 2rem;
+    text-align: center;
+    width: 30%;
+}
+
+.person img {
+    border-radius: 50%;
+    height: 100px;
+    margin-bottom: 1rem;
+    width: 100px;
+}
+
+.person h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.person p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .about-us {
+        flex-direction: column;
+    }
+
+    .person {
+        width: 80%;
+    }
+}
