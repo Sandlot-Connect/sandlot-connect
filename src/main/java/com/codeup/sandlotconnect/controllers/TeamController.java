@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.List;
 
 @Controller
@@ -62,7 +63,7 @@ public class TeamController {
         if (!user.isCaptain()) {
             return "redirect:/teams";
         } else
-        return "redirect:/teams/admin";
+            return "redirect:/teams/admin";
     }
 
 
@@ -88,5 +89,17 @@ public class TeamController {
         user.setCaptain(true);
         teamDao.save(team);
         return "redirect:/teams";
+    }
+
+    @PostMapping("/teams/{id}/leave")
+    public String removePlayer(@PathVariable long id, @PathVariable long userId) {
+        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        Team team = teamDao.findTeamById(id);
+        if (user.isCaptain()) {
+            user.setCaptain(false);
+        }
+        user.setTeam(null);
+        teamDao.save(team);
+        return "redirect:/teams/show";
     }
 }

@@ -10,10 +10,14 @@
         <h2>Team Name: <span th:text="${team.name}"></span></h2>
         <h2>Team City: <span th:text="${team.city}"></span></h2>
         <h2>Team Captain:  <span th:text="${team.captain.firstName}"></span></h2>
-        <h2>Players:  <span th:each="user : ${team.users}"><p th:text="${user.firstName}"></p></span></h2>
+        <h3>Players:  <span th:each="user : ${team.users}"><p th:text="${user.firstName}"></p></span></h3>
         <a th:href="@{/teams/{id}/posts (id=${team.id})}">Posts</a>
     </div>
-    <div class="text-container"></div>
+    <div class="text-container">
+        <form th:action="@{/teams/{id}/leave (id=${team.id}" method="post">
+        <button class="btn btn-danger" th:if="${user.username} == ${#authentication.principal.username}">Leave this team</button>
+        </form>
+    </div>
 </div>
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: js"></div>
