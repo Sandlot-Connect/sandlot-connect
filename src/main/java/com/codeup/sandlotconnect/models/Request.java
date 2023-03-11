@@ -12,6 +12,9 @@ public class Request {
     @Column
     private String status;
 
+    @Column
+    private boolean cancelled = false;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
@@ -32,6 +35,21 @@ public class Request {
 
     public Request(String status, User user, Team team) {
         this.status = status;
+        this.user = user;
+        this.team = team;
+    }
+
+    public Request(long id, String status, boolean cancelled, User user, Team team) {
+        this.id = id;
+        this.status = status;
+        this.cancelled = cancelled;
+        this.user = user;
+        this.team = team;
+    }
+
+    public Request(String status, boolean cancelled, User user, Team team) {
+        this.status = status;
+        this.cancelled = cancelled;
         this.user = user;
         this.team = team;
     }
@@ -66,5 +84,13 @@ public class Request {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
     }
 }

@@ -5,17 +5,27 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <div class="main-container">
-    <h1>TEAMS IN THE SANDLOT CONNECT LEAGUE</h1>
-    <div th:each="team : ${teams}">
-        <a th:href="@{/teams/{id} (id = ${team.id})}"><h1 th:text="${team.name}"></h1></a>
-        <form th:action="@{/teams/{id}/notifications (id = ${team.id})}" method="post">
-            <button sec:authorize="isAuthenticated()" th:value="${team.id}">Request To Join This Team</button>
-            <br>
-        </form>
+    <div class="text-container">
+        <h1 sec:authorize="isAuthenticated()" th:text="'Welcome, ' + ${#authentication.principal.username} + '.'"></h1>
+        <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team == null}">Create or Request to join a team below.</p>
+        <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team != null}" th:text="'Your team is the ' + ${#authentication.principal.team.city} + ' ' + ${#authentication.principal.team.name} + '. Access your team page by clicking on your team in the navbar.'"></p>
+        <h1 sec:authorize="!isAuthenticated()" >Welcome, Guest.</h1>
+        <p sec:authorize="!isAuthenticated()">Register or Login to join or create a team.</p>
+        <div th:each="team : ${teams}">
+            <a th:href="@{/teams/{id} (id = ${team.id})}"><h1 th:text="${team.name}"></h1></a>
+            <form sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team == null}" th:action="@{/teams/{id}/notifications (id=${team.id})}" method="post" class="request-form">
+                <button class="btn btn-secondary request-button">Request To Join This Team</button>
+                <br>
+            </form>
+            <div sec:authorize="isAuthenticated()" th:each="request : ${team.requests}">
+                <form th:if="${request.status == 'Pending' and request.user.username == #authentication.principal.username}" th:action="@{/teams/{id}/requests/{requestId}/cancel(id=${team.id}, requestId=${request.id})}" method="post" class="cancel-form">
+                    <button type="submit" class="btn btn-danger cancel-request">Cancel Request</button>
+                </form>
+            </div>
+        </div>
+        <a href="/teams/create">Create A Team</a>
     </div>
-    <div class="text-container"></div>
 </div>
-<a href="/teams/create">Create A Team</a>
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: js"></div>
 </body>

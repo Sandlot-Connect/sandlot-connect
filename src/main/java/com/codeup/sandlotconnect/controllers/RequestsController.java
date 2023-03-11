@@ -55,4 +55,19 @@ public class RequestsController {
         requestDao.save(request);
         return "redirect:/teams/" + id + "/admin";
     }
+
+    @PostMapping("/teams/{id}/requests/{requestId}/cancel")
+    public String cancelRequest(@PathVariable long id, @PathVariable long requestId) {
+        Team team = teamDao.findTeamById(id);
+        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        Request request = requestDao.findRequestById(requestId);
+
+        if (request == null || !request.getUser().equals(user) || !request.getTeam().equals(team)) {
+            return "redirect:/teams";
+        }
+        request.setStatus("Declined");
+        request.setCancelled(true);
+        requestDao.save(request);
+        return "redirect:/teams";
+    }
 }
