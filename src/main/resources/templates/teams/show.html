@@ -11,11 +11,12 @@
             <h2 th:text="'The team captain is ' + ${team.captain.firstName} + ${team.captain.lastName}"></h2>
             <h2>Players</h2>
         <div th:each="user : ${team.users}">
-            <p th:text="${user.firstName}"></p>
             <img th:if="${user.profilePictureUrl} != null" th:src="${user.profilePictureUrl}" alt="Profile picture"/>
-            <img th:if="${user.profilePictureUrl} == null" src="../../static/img/defaultImg.jpg" alt="Default profile picture"/>
+            <img style="width: 75px; height: 75px;" th:if="${user.profilePictureUrl} == null" th:src="@{/img/defaultImg.jpg}" alt="Default profile picture"/>
+            <p th:text="${user.firstName}"></p>
+
             <form th:action="@{/teams/{id}/leave (id=${team.id})}" method="post">
-            <button sec:authorize="isAuthenticated()" class="btn btn-danger" th:if="${user.username} == ${#authentication.principal.username}">Leave this team</button>
+                <button sec:authorize="isAuthenticated()" class="btn btn-danger" th:if="${user.username} == ${#authentication.principal.username}">Leave this team</button>
             </form>
         </div>
     </div>
