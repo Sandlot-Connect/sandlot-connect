@@ -13,19 +13,19 @@
             
             <label for="last-name">Last Name</label>
             <input id="last-name" th:field="*{lastName}" />
-
-            <label for="username">Email Address</label>
+            <br>
+            <label for="username">Email Address (This will be your username)</label>
             <input id="username" th:field="*{username}" />
-
+            <br>
             <label for="description">About me</label>
-            <textarea id="description" th:field="*{description}"></textarea>
-
-<!--            <label for="profile-pic">Profile Picture</label>-->
-<!--            <input id="profile-pic" type="file" th:field="*{profilePictureUrl}" />-->
-
+            <textarea id="description" th:field="*{description}" cols="75"></textarea>
+            <br>
+            <label for="profile-pic">Profile Picture</label>
+            <input id="profile-pic" type="file" th:field="*{profilePictureUrl}" />
+            <br>
             <label for="password">Password</label>
             <input id="password" type="password" th:field="*{password}" />
-
+            <br>
             <input value="Submit" type="submit" />
         </form>
 <!--        <input type="hidden" id="apiKey" th:value="${apiKey}">-->

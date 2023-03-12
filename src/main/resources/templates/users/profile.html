@@ -10,7 +10,7 @@
             <h1 th:text="|Howdy, ${#authentication.principal.firstName}!|"></h1>
             <h2>Profile</h2>
             <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
-                <label class="m-2" for="username">Email Address</label>
+                <label class="m-2" for="username">Email Address / Username</label>
                 <input disabled id="username" name="username" th:value="${user.username}" />
             </div>
 
@@ -28,6 +28,10 @@
                 <label class="m-2" for="description">About me</label>
                 <textarea disabled id="description" name="description" th:text="${user.description}" ></textarea>
             </div>
+            <br>
+<!--            <label for="profile-pic">Profile Picture</label>-->
+<!--            <input id="profile-pic" type="file" th:field="*{}" />-->
+            <br>
             <a href="/profile/edit" class="btn btn-primary">Edit</a>
         </div>
     </div>

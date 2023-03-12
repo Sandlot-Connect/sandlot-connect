@@ -26,17 +26,21 @@
                 <a th:if="${#authentication.principal.team != null}" th:href="@{/teams/{id}/posts(id=${#authentication.principal.team.id})}" th:text="${#authentication.principal.team.name}" class="nav-links nav-text"></a>
                 <a th:if="${#authentication.principal.team == null}" th:href="@{/teams}">Join or create a team</a>
             </li>
-            <li>
-                <a href="/about-us" class="nav-links nav-text">About us</a>
-            </li>
+
             <li>
                 <a href="/teams" class="nav-links nav-text">Teams</a>
+            </li>
+            <li>
+                <a href="/profile" class="nav-links nav-text">Profile</a>
             </li>
             <li sec:authorize="!isAuthenticated()">
                 <a class="nav-links nav-text" href="/register">Register</a>
             </li>
             <li sec:authorize="!isAuthenticated()">
                 <a class="nav-links nav-text" href="/login">Login</a>
+            </li>
+            <li>
+            <a href="/about-us" class="nav-links nav-text">About us</a>
             </li>
             <li sec:authorize="isAuthenticated()">
                 <form th:action="@{/logout}" method="post" id="logout-form" th:hidden="${true}">
