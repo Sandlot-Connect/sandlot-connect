@@ -8,11 +8,11 @@
     <div class="text-container">
         <div>
             <h1 th:text="${team.city} + ' ' + ${team.name}"></h1>
-            <h2 th:text="'The team captain is ' + ${team.captain.firstName} + ${team.captain.lastName}"></h2>
+            <h2 th:text="'The team captain is ' + ${team.captain.firstName} + ' ' + ${team.captain.lastName}"></h2>
             <h2>Players</h2>
         <div th:each="user : ${team.users}">
             <img th:if="${user.profilePictureUrl} != null" th:src="${user.profilePictureUrl}" alt="Profile picture"/>
-            <img style="width: 75px; height: 75px;" th:if="${user.profilePictureUrl} == null" th:src="@{/img/defaultImg.jpg}" alt="Default profile picture"/>
+            <img style="width: 75px; height: 75px;" th:if="${user.profilePictureUrl} == null" th:src="@{/img/baseball-svgrepo-com.svg}" alt="Default profile picture"/>
             <p th:text="${user.firstName}"></p>
 
             <form th:action="@{/teams/{id}/leave (id=${team.id})}" method="post">

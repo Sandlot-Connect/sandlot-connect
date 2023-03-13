@@ -60,3 +60,14 @@ function closeSidebar() {
     document.getElementById("main").style.marginLeft= "0";
     document.querySelector('.main-container').classList.add('sidebar-closed');
 }
+
+function showPopup(userId) {
+    let popup = $("#popup-" + userId);
+    popup.find("#userId").val(userId);
+    popup.show();
+}
+
+function hidePopup() {
+    document.getElementById('popup').style.display = 'none';
+    $("#popup").hide();
+}
