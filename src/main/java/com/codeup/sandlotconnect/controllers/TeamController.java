@@ -103,6 +103,7 @@ public class TeamController {
         }
         user.setTeam(null);
         userDao.save(user);
+        requestDao.deleteById(id);
         return "redirect:/teams";
     }
 }
