@@ -43,6 +43,7 @@ public class UserController {
     @GetMapping("/profile")
     public String showProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user = userDao.findById(user.getId());
         model.addAttribute("user", user);
         return "users/profile";
     }
@@ -50,6 +51,7 @@ public class UserController {
     @GetMapping("/profile/edit")
     public String showEditProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user = userDao.findById(user.getId());
         model.addAttribute("user", user);
         return "users/edit-profile";
     }

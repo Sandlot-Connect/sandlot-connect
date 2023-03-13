@@ -48,3 +48,15 @@ $(document).ready(function() {
         $('.request-form').css("display", "none");
     }
 });
+//for sidebar on team posts page
+function openSidebar() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.querySelector('.main-container').classList.remove('sidebar-closed');
+}
+
+function closeSidebar() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.querySelector('.main-container').classList.add('sidebar-closed');
+}

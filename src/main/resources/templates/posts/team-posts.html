@@ -4,35 +4,41 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<div class="main-container">
-    <div class="text-container">
-    <h1><span th:text="${team.city} + ' ' + ${team.name}"></span></h1>
+<div id="mySidebar" class="sidebar div1">
+    <div class="close-btn" th:onclick="closeSidebar()">×</div>
     <div>
         <ul>
-           <li th:each="user : ${team.users}">
-               <button th:text="${user.firstName}" type="button" class="btn btn-secondary"
-                       data-bs-toggle="popover" data-bs-placement="right"
-                       data-bs-custom-class="custom-popover"
-                       data-bs-title="Custom popover"
-                       data-bs-content="This popover is themed via CSS variables.">
-               </button>
-           </li>
+            <li th:each="user : ${team.users}">
+                <button th:text="${user.firstName}" type="button" class="btn btn-secondary">
+                </button>
+            </li>
         </ul>
     </div>
+</div>
+<div id="main">
+    <button class="open-btn" th:onclick="openSidebar()">Players</button>
+</div>
+<div class="main-container sidebar-closed">
+    <div class="text-container parent">
+        <div class="div2">
+    <h1 th:text="${team.city} + ' ' + ${team.name}"></h1>
+        </div>
+        <div class="div3">
         <form method="post" th:action="@{/teams/{id}/posts/create(id=${team.id})}">
             <div class="mb-3">
                 <label for="title" class="form-label">Title:</label>
-                <input type="text" class="form-control" id="title" name="title" required>
+                <input type="text" class="form-control m-auto w-75" id="title" name="title" required>
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">Content:</label>
-                <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+                <textarea class="form-control m-auto w-75" id="content" name="content" rows="5" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Create Post</button>
         </form>
-
-        <ul>
-            <li th:each="post : ${posts}">
+        </div>
+        <div class="div4">
+        <ul class="p-0 list-unstyled">
+            <li th:each="post : ${posts}" class="card m-5">
                 <div th:id="'post-' + ${post.id}">
 
                     <h3 th:text="${post.title}" class="post-title"></h3>
@@ -46,7 +52,7 @@
 
                         <p th:text="'Created By ' + ${post.user.firstName} + ' at ' + ${post.timestamp}"></p>
 
-                        <button class="btn btn-light save-button" th:if="${post.user.username} == ${#authentication.principal.username}">Save</button>
+                        <button class="btn btn-primary save-button" th:if="${post.user.username} == ${#authentication.principal.username}">Save</button>
                     </form>
                     <button th:if="${post.user.username == #authentication.principal.username}" th:onclick="'toggleEdit(' + ${post.id} + ')'" class="btn btn-secondary edit-button">Edit</button>
 
@@ -55,8 +61,8 @@
                     </form>
                     <div th:id="'comments-' + ${post.id}">
                         <h4>Comments:</h4>
-                        <ul>
-                            <li th:each="comment: ${post.comments}">
+                        <ul class="p-0 list-unstyled">
+                            <li th:each="comment: ${post.comments}" class="card m-3">
                                 <p th:text="${comment.content}"></p>
                                 <p th:text="'Commented by ' + ${comment.user.firstName}"></p>
                                 <form th:action="@{/teams/{id}/posts/{postId}/comments/{commentId}/delete(id=${team.id}, postId=${post.id}, commentId=${comment.id})}" method="post">
@@ -74,10 +80,10 @@
                             <button type="submit" class="btn btn-primary">Submit Comment</button>
                         </form>
                     </div>
-                    <hr>
                 </div>
             </li>
         </ul>
+    </div>
     </div>
 </div>
 <footer th:replace="partials :: footer"></footer>
