@@ -103,19 +103,24 @@ public class TeamController {
         }
         user.setTeam(null);
         userDao.save(user);
-        requestDao.deleteById(id);
         return "redirect:/teams";
     }
 
-    @PostMapping("/teams/{id}/posts/drop")
-    public String dropPlayer(@PathVariable long id, long userId) {
-        User user = userDao.getById(userId);
+    @PostMapping("/teams/{id}/posts/{userId}/drop")
+    public String dropPlayer(@PathVariable long id, @PathVariable long userId) {
+        User currentUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        User user = userDao.findById(userId);
         Team team = teamDao.findTeamById(id);
-        if (user.isCaptain()) {
-            user.setTeam(null);
-            userDao.save(user);
-            requestDao.deleteById(id);
+        User captain = team.getCaptain();
+        if (!currentUser.equals(captain)) {
+            return "redirect:/teams/" + id + "/posts";
         }
-        return "redirect:/teams/{id}/posts";
+
+        if (currentUser.equals(user)) {
+            return "redirect:/teams/" + id + "/posts";
+        }
+        user.setTeam(null);
+        userDao.save(user);
+        return "redirect:/teams/" + id + "/posts";
     }
 }
