@@ -69,18 +69,6 @@ footer p {
     font-size: 0.8rem;
 }
 
-.title-input {
-    display: none;
-    border: 1px solid #ccc;
-    padding: 5px;
-}
-
-.content-textarea {
-    display: none;
-    border: 1px solid #ccc;
-    padding: 5px;
-}
-
 .title-label {
     display: none;
 }
@@ -91,6 +79,85 @@ footer p {
 
 .save-button {
     display: none;
+    margin: auto;
+}
+
+.title-input {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 80%;
+    margin: auto;
+}
+
+.content-textarea {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 80%;
+    margin: auto;
+}
+
+.save-button {
+    display: none;
+    margin: auto;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: azure;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 1;
+}
+
+.sidebar div {
+    padding: 8px 8px 8px 30px;
+    font-size: 24px;
+    display: block;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+}
+
+.open-btn {
+    cursor: pointer;
+    background-color: azure;
+}
+
+#main {
+    transition: margin-left .5s;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.div2 {
+    grid-area: 1 / 1 / 2 / 3;
+}
+
+.div3 {
+    grid-area: 2 / 1 / 4 / 3;
+}
+
+.div4 {
+    grid-area: 4 / 1 / 7 / 3;
 }
 
 /* Navbar Styles */
