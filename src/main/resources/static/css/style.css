@@ -1,13 +1,14 @@
 body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
 }
 
 /* Navigation styles */
 nav {
-    background-color: #333;
-    color: #fff;
+    background-color: #222;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,7 +37,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #f2f2f2;
+    color: #ccc;
 }
 
 /* Main container styles */
@@ -57,8 +58,8 @@ nav ul li a:hover {
 
 /* Footer styles */
 footer {
-    background-color: #f2f2f2;
-    color: #333;
+    background-color: #444;
+    color: #fff;
     text-align: center;
     padding: 1rem;
 }
@@ -90,36 +91,14 @@ footer p {
 .save-button {
     display: none;
 }
-/* Body Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-}
 
 /* Navbar Styles */
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #3b5998;
-    color: #fff;
-    padding: 1rem;
+    background-color: #000;
 }
 
 nav a {
     color: #fff;
-    text-decoration: none;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li:not(:last-child) {
-    margin-right: 1rem;
 }
 
 /* Main Container Styles */
@@ -130,10 +109,6 @@ nav ul li:not(:last-child) {
     height: 100vh;
 }
 
-.text-container {
-    text-align: center;
-}
-
 .text-container h1 {
     font-size: 4rem;
     font-weight: bold;
@@ -141,14 +116,8 @@ nav ul li:not(:last-child) {
 
 /* Footer Styles */
 footer {
-    background-color: #e9ebee;
-    color: #65676b;
-    text-align: center;
-    padding: 1rem;
-}
-
-footer p {
-    margin: 0;
+    background-color: #222;
+    color: #ccc;
 }
 
 /* About Us Styles */
@@ -163,9 +132,9 @@ footer p {
 
 .person {
     background-color: #fff;
-    border: 1px solid #dddfe2;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin: 1rem;
     padding: 2rem;
     text-align: center;
@@ -199,4 +168,10 @@ footer p {
     .person {
         width: 80%;
     }
-}
+
+    .home .hero {
+        background-image: url("hero-background.jpg");
+        background-position: center;
+
+    }}
+
