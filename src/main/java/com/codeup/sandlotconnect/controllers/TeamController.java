@@ -106,4 +106,16 @@ public class TeamController {
         requestDao.deleteById(id);
         return "redirect:/teams";
     }
+
+    @PostMapping("/teams/{id}/posts/drop")
+    public String dropPlayer(@PathVariable long id, long userId) {
+        User user = userDao.getById(userId);
+        Team team = teamDao.findTeamById(id);
+        if (user.isCaptain()) {
+            user.setTeam(null);
+            userDao.save(user);
+            requestDao.deleteById(id);
+        }
+        return "redirect:/teams/{id}/posts";
+    }
 }
