@@ -1,13 +1,14 @@
 body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
 }
 
 /* Navigation styles */
 nav {
-    background-color: #333;
-    color: #fff;
+    background-color: #222;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,7 +37,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #f2f2f2;
+    color: #ccc;
 }
 
 /* Main container styles */
@@ -57,8 +58,8 @@ nav ul li a:hover {
 
 /* Footer styles */
 footer {
-    background-color: #f2f2f2;
-    color: #333;
+    background-color: #444;
+    color: #fff;
     text-align: center;
     padding: 1rem;
 }
@@ -90,3 +91,87 @@ footer p {
 .save-button {
     display: none;
 }
+
+/* Navbar Styles */
+nav {
+    background-color: #000;
+}
+
+nav a {
+    color: #fff;
+}
+
+/* Main Container Styles */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.text-container h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #222;
+    color: #ccc;
+}
+
+/* About Us Styles */
+.about-us {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto;
+    max-width: 1000px;
+}
+
+.person {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 1rem;
+    padding: 2rem;
+    text-align: center;
+    width: 30%;
+}
+
+.person img {
+    border-radius: 50%;
+    height: 100px;
+    margin-bottom: 1rem;
+    width: 100px;
+}
+
+.person h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.person p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .about-us {
+        flex-direction: column;
+    }
+
+    .person {
+        width: 80%;
+    }
+
+    .home .hero {
+        background-image: url("hero-background.jpg");
+        background-position: center;
+
+    }}
+
