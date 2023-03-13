@@ -8,7 +8,7 @@
     <div class="text-container">
         <h1 sec:authorize="isAuthenticated()" th:text="'Welcome, ' + ${#authentication.principal.username} + '.'"></h1>
         <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team == null}">Create or Request to join a team below.</p>
-        <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team != null}" th:text="'Your team is the ' + ${#authentication.principal.team.city} + ' ' + ${#authentication.principal.team.name} + '. Access your team posts by clicking on your team in the navbar or click your team name below to access your team page.'"></p>
+        <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team != null}" th:text="'Your team is the ' + ${#authentication.principal.team.city} + ' ' + ${#authentication.principal.team.name} + '. Access your team posts by clicking on your team name in the navbar.'"></p>
         <h1 sec:authorize="!isAuthenticated()" >Welcome, Guest.</h1>
         <p sec:authorize="!isAuthenticated()">Register or Login to join or create a team.</p>
         <div th:each="team : ${teams}">
