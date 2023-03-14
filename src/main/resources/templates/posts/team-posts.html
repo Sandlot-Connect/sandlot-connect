@@ -3,7 +3,13 @@
 <head th:replace="~{partials :: head ('Posts')}">
 </head>
 <body>
-<nav th:replace="partials :: navbar"></nav>
+<nav th:replace="~{partials :: navbar}"></nav>
+<!--<form th:action="@{/teams/{id}/leave (id=${team.id})}" method="post">-->
+<!--    <button sec:authorize="isAuthenticated()" class="btn btn-danger"-->
+<!--            th:if="${user.username} == ${#authentication.principal.username}">Leave this-->
+<!--        team-->
+<!--    </button>-->
+<!--</form>-->
 <div id="mySidebar" class="sidebar div1">
     <div class="close-btn" th:onclick="closeSidebar()">×</div>
     <div>
@@ -96,7 +102,7 @@
     </div>
     </div>
 </div>
-<footer th:replace="partials :: footer"></footer>
-<div th:replace="partials :: js"></div>
+<footer th:replace="~{partials :: footer}"></footer>
+<div th:replace="~{partials :: js}"></div>
 </body>
 </html>

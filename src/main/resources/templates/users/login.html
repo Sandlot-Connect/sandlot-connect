@@ -15,15 +15,19 @@
         </div>
 
         <form th:action="@{/login}" method="post">
-            <label for="username">Username</label>
-            <input id="username" name="username" type="text" />
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" />
-            <input type="submit" value="Log In" />
+            <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text"/>
+            </div>
+            <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password"/>
+            </div>
+            <input type="submit" value="Log In"/>
         </form>
     </div>
-    </div>
-    <footer th:replace="partials :: footer"></footer>
+</div>
+<footer th:replace="partials :: footer"></footer>
 </div>
 <div th:replace="partials :: js"></div>
 </body>

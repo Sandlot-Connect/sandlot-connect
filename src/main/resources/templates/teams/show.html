@@ -3,26 +3,29 @@
 <head th:replace="~{partials :: head ('Welcome to my blog')}">
 </head>
 <body>
-<nav th:replace="partials :: navbar"></nav>
+<nav th:replace="~{partials :: navbar}"></nav>
 <div class="">
     <div class="text-container">
         <div>
             <h1 th:text="${team.city} + ' ' + ${team.name}"></h1>
             <h2 th:text="'The team captain is ' + ${team.captain.firstName} + ' ' + ${team.captain.lastName}"></h2>
             <h2>Players</h2>
-        <div th:each="user : ${team.users}">
-            <img th:if="${user.profilePictureUrl} != null" th:src="${user.profilePictureUrl}" alt="Profile picture"/>
-            <img style="width: 75px; height: 75px;" th:if="${user.profilePictureUrl} == null" th:src="@{/img/baseball-svgrepo-com.svg}" alt="Default profile picture"/>
-            <p th:text="${user.firstName}"></p>
-
-            <form th:action="@{/teams/{id}/leave (id=${team.id})}" method="post">
-                <button sec:authorize="isAuthenticated()" class="btn btn-danger" th:if="${user.username} == ${#authentication.principal.username}">Leave this team</button>
-            </form>
-        </div>
-    </div>
-</div>
-</div>
-<footer th:replace="partials :: footer"></footer>
-<div th:replace="partials :: js"></div>
+            <div class="container">
+                <div class="row row-cols-3 row-cols-lg-5 g-2 g-lg-3">
+                    <div class="col">
+                        <div th:each="user : ${team.users}">
+                            <img th:if="${user.profilePictureUrl} != null" th:src="${user.profilePictureUrl}"
+                                 alt="Profile picture"/>
+                            <img style="width: 75px; height: 75px;" th:if="${user.profilePictureUrl} == null"
+                                 th:src="@{/img/baseball-svgrepo-com.svg}" alt="Default profile picture"/>
+                            <p th:text="${user.firstName}"></p>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer th:replace="~{partials :: footer}"></footer>
+            <div th:replace="~{partials :: js}"></div>
 </body>
 </html>
