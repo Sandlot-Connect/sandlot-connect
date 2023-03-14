@@ -32,7 +32,7 @@
 </div>
 
 <div id="main">
-    <button class="open-btn" th:onclick="openSidebar()">Players</button>
+    <button class="open-btn" th:onclick="openSidebar()">Players<i class="fa-solid fa-caret-right"></i></button>
 </div>
 <div class="sidebar-closed wrapper">
     <div class="text-container parent">
@@ -53,7 +53,7 @@
         </form>
         </div>
         <div class="div4">
-        <ul class="p-0 d-flex justify-content-center list-unstyled">
+        <ul class="p-0 d-flex flex-column align-items-center justify-content-center list-unstyled">
             <li th:each="post : ${posts}" class="card m-5 w-75">
                 <div th:id="'post-' + ${post.id}">
 
