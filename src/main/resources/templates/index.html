@@ -4,11 +4,34 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<div class="main-container">
-    <div class="text-container">
-        <h1>Home</h1>
+
+<div>
+    <img th:src="@{/img/baseball-diamond-lit-at-night.jpg}" alt="">
+</div>
+
+<div class="jumbotron text-center">
+    <h1>Sandlot Connect</h1>
+    <p>Connecting baseball players and enthusiasts around the world.</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>About Us</h2>
+            <p>Sandlot Connect is a revolutionary new social media platform that's designed specifically for baseball players. With Sandlot Connect, you can easily browse, join, and leave teams, making it easier than ever to connect with other baseball players in your area.
+
+                Whether you're a seasoned veteran or just starting out, Sandlot Connect makes it easy to find the right team for you. With our powerful search tools, you can quickly filter through teams based on your skill level, age group, and location. And with our intuitive interface, you can easily connect with team managers and coaches to learn more about the team and get started.
+
+                But Sandlot Connect isn't just for finding teams – it's also a great way to connect with other players in your area. With our social features, you can create and join groups, share your progress and accomplishments, and even challenge other players to friendly games.
+
+                So whether you're looking to join a new team or just connect with other baseball players in your area, Sandlot Connect is the perfect platform for you. Join today and start connecting with other players and teams in your area!</p>
+        </div>
+        <div class="col-md-4">
+            <img src="@{/img/sandlot.jpg}" alt="">
+        </div>
     </div>
 </div>
+
 <footer th:replace="partials :: footer">
     <p>&copy; 2023 My Website. All rights reserved.</p>
 </footer>
