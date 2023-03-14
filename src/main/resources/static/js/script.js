@@ -67,7 +67,19 @@ function showPopup(userId) {
     popup.show();
 }
 
-function hidePopup() {
-    document.getElementById('popup').style.display = 'none';
-    $("#popup").hide();
+function hidePopup(userId) {
+    let popup = $("#popup-" + userId);
+    popup.hide();
+}
+
+function togglePasswordVisibility(fieldId) {
+    let passwordInput = document.getElementById(fieldId);
+    let passwordVisibilityButton = document.querySelector("#" + fieldId + " + .btn");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        passwordVisibilityButton.innerHTML = '<i class="fa-regular fa-eye"></i>';
+    } else {
+        passwordInput.type = "password";
+        passwordVisibilityButton.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+    }
 }

@@ -9,15 +9,15 @@
     <div>
         <ul>
             <li th:each="user : ${team.users}">
-                <button th:text="${user.firstName}" type="button" class="btn btn-secondary" th:onclick="'showPopup(' + ${user.id} + ')'">
+                <button  th:text="${user.firstName}" type="button" class="btn btn-secondary" th:onclick="'showPopup(' + ${user.id} + ')'">
                 </button>
-                <div th:id="'popup-' + ${user.id}" style="display:none">
+                <div th:if="${#authentication.principal.isCaptain}" th:id="'popup-' + ${user.id}" style="display:none">
                     <h3>Remove Player</h3>
                     <form th:action="@{/teams/{id}/posts/{userId}/drop(id=${team.id}, userId=${user.id})}" th:class="'removePlayerForm-' + ${user.id}" method="post">
                         <input type="hidden" name="teamId" id="teamId">
                         <input type="hidden" name="userId" id="userId">
                         <button type="submit" class="btn btn-danger">Remove</button>
-                        <button type="button" class="btn btn-secondary" onclick="hidePopup()">Cancel</button>
+                        <button type="button" class="btn btn-secondary" th:onclick="'hidePopup(' + ${user.id} + ')'">Cancel</button>
                     </form>
                 </div>
             </li>
@@ -37,11 +37,11 @@
         <form method="post" th:action="@{/teams/{id}/posts/create(id=${team.id})}">
             <div class="mb-3">
                 <label for="title" class="form-label">Title:</label>
-                <input type="text" class="form-control m-auto w-75" id="title" name="title" required>
+                <input type="text" class="form-control m-auto w-75" id="title" name="title" placeholder="Post title..." required>
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">Content:</label>
-                <textarea class="form-control m-auto w-75" id="content" name="content" rows="5" required></textarea>
+                <textarea class="form-control m-auto w-75" id="content" name="content" rows="5" placeholder="Post body..." required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Create Post</button>
         </form>
