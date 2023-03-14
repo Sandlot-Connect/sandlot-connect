@@ -52,7 +52,7 @@ public class RequestsController {
         } else if (status.equals("decline")) {
             request.setStatus("Declined");
         }
-        requestDao.save(request);
+        requestDao.delete(request);
         return "redirect:/teams/" + id + "/admin";
     }
 
@@ -65,9 +65,8 @@ public class RequestsController {
         if (request == null || !request.getUser().equals(user) || !request.getTeam().equals(team)) {
             return "redirect:/teams";
         }
-        request.setStatus("Declined");
-        request.setCancelled(true);
-        requestDao.save(request);
+
+        requestDao.delete(request);
         return "redirect:/teams";
     }
 }

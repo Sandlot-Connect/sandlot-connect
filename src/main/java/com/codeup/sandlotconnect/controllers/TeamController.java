@@ -111,6 +111,7 @@ public class TeamController {
         User currentUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         User user = userDao.findById(userId);
         Team team = teamDao.findTeamById(id);
+        Request request = requestDao.findRequestByUser(user);
         User captain = team.getCaptain();
         if (!currentUser.equals(captain)) {
             return "redirect:/teams/" + id + "/posts";
@@ -120,6 +121,7 @@ public class TeamController {
             return "redirect:/teams/" + id + "/posts";
         }
         user.setTeam(null);
+        requestDao.delete(request);
         userDao.save(user);
         return "redirect:/teams/" + id + "/posts";
     }

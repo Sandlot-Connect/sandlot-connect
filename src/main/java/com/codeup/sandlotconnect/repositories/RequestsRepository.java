@@ -11,4 +11,5 @@ public interface RequestsRepository extends JpaRepository<Request, Long> {
     Request findRequestById(long id);
     Request findRequestByUserAndTeamAndCancelled(User user, Team team, boolean cancelled);
     List<Request> findByUserAndStatusAndCancelledFalse(User user, String status);
+    Request findRequestByUser(User user);
 }
