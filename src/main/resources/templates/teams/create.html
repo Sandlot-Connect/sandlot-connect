@@ -4,7 +4,7 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<div class="main-container">
+<div class="wrapper">
     <h3>What is the name of your team?</h3>
     <form th:action="@{/teams/create}" method="post">
         <label for="name">Name your team:</label>
