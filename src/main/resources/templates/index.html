@@ -4,19 +4,23 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-
-<div>
+<div style="
+    width: 75%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: auto;
+    opacity: 0.75;
+">
     <img th:src="@{/img/baseball-diamond-lit-at-night.jpg}" alt="">
 </div>
 
 <div class="jumbotron text-center">
-    <h1>Sandlot Connect</h1>
     <p>Connecting baseball players and enthusiasts around the world.</p>
 </div>
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-lg-7 col-md-6">
             <h2>About Us</h2>
             <p>Sandlot Connect is a revolutionary new social media platform that's designed specifically for baseball players. With Sandlot Connect, you can easily browse, join, and leave teams, making it easier than ever to connect with other baseball players in your area.
 
@@ -26,8 +30,8 @@
 
                 So whether you're looking to join a new team or just connect with other baseball players in your area, Sandlot Connect is the perfect platform for you. Join today and start connecting with other players and teams in your area!</p>
         </div>
-        <div class="col-md-4">
-            <img src="@{/img/sandlot.jpg}" alt="">
+        <div class="col-lg-5 col-md-6 d-flex justify-content-center">
+            <img th:src="@{/img/baseball-bat-ball (1).jpg}" alt="Baseball bat">
         </div>
     </div>
 </div>
