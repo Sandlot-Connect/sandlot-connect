@@ -4,7 +4,7 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<div class="main-container">
+<div class="">
     <div class="text-container">
         <h1 sec:authorize="isAuthenticated()" th:text="'Welcome, ' + ${#authentication.principal.username} + '.'"></h1>
         <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team == null}">Create or Request to join a team below.</p>
@@ -23,7 +23,7 @@
                 </form>
             </div>
         </div>
-        <a href="/teams/create">Create A Team</a>
+        <a sec:authorize="isAuthenticated()" href="/teams/create">Create A Team</a>
     </div>
 </div>
 <footer th:replace="partials :: footer"></footer>
