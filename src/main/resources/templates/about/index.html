@@ -5,13 +5,16 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <main class="container-fluid">
-    <h2 class="text-center">About Us</h2>
-    <section class="container about-us justify-content-center">
-        <div class="row">
+    <h2 class="mt-5 text-center">About Us</h2>
+    <section class="container about-us justify-content-center row">
             <div class="person col-md-4">
                 <img th:src="@{/img/Screenshot 2023-03-13 at 1.57.32 PM.png}" alt="Shawn Wilson">
                 <h3>Shawn Wilson</h3>
                 <h4>Full Stack Developer</h4>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="https://github.com/sb-son"><i class="fab fa-github social-icon"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/shawnbwilson/"><i class="fab fa-linkedin social-icon"></i></a></li>
+                </ul>
                 <p>Meet Shawn Wilson, an accomplished web developer with expertise in a wide range of programming languages, including Java, JavaScript, HTML, and CSS. In addition to his programming skills, Shawn is proficient in multiple database systems and has a knack for creating visually stunning web applications that offer seamless user experiences.
 
                     Shawn's journey as a web developer began during his college years, where he was drawn to the world of web development and programming. He has since dedicated himself to mastering the latest web technologies and expanding his skill set through practical experience and personal projects.
@@ -26,6 +29,10 @@
                 <img th:src="@{/img/Screenshot 2023-03-13 at 1.58.31 PM.png}" alt="Ralph McCloskey">
                 <h3>Ralph McCloskey</h3>
                 <h4>Full Stack Developer</h4>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="https://github.com/Rafagithub135"><i class="fab fa-github social-icon"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/ralph-mccloskey-899680a4/"><i class="fab fa-linkedin social-icon"></i></a></li>
+                </ul>
                 <p>Ralph McCloskey is a talented web developer with a strong background in programming languages such as Java, JavaScript, HTML, and CSS, as well as proficiency in multiple database systems. With his impressive skill set, Ralph is capable of creating dynamic and visually appealing web applications that deliver seamless user experiences.
 
                     Ralph's passion for web development began during his undergraduate studies in Computer Science, where he gained a deep understanding of web technologies and programming concepts. Since then, Ralph has continued to develop his skills through hands-on experience and personal projects, honing his craft and expanding his knowledge base.
@@ -36,9 +43,13 @@
                 </p>
             </div>
             <div class="person col-md-4">
-                <img th:src="@{/img/image_50412801.JPG}" alt="Javier Razo">
+                <img th:src="@{/img/Screenshot 2023-03-14 at 8.51.22 AM.png}" alt="Javier Razo">
                 <h3>Javier Razo</h3>
                 <h4>Full Stack Developer</h4>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="https://github.com/EnderX1221"><i class="fab fa-github social-icon"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/javier-razo-b47a291b7/"><i class="fab fa-linkedin social-icon"></i></a></li>
+                </ul>
                 <p>Meet Javier Razo, a talented and ambitious web developer with extensive experience in programming languages such as Java, JavaScript, HTML, and CSS. In addition to his programming skills, Javier is proficient in multiple database systems and has a passion for creating innovative and user-friendly web applications.
 
                     Javier's interest in web development began during his undergraduate studies in Computer Science, where he discovered his passion for creating websites that combine functionality with aesthetic appeal. Since then, he has honed his skills through practical experience and ongoing professional development, and he is always exploring new ways to push the boundaries of what's possible in web development.
@@ -49,7 +60,6 @@
 
                     In summary, Javier Razo is an accomplished and driven web developer with a passion for creating cutting-edge web applications that deliver exceptional user experiences. His dedication to quality and innovation ensures that his clients receive the best possible solutions to their web development needs.</p>
             </div>
-        </div>
     </section>
 </main>
 

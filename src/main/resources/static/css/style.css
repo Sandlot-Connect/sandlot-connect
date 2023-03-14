@@ -250,9 +250,11 @@ footer {
 
 .about-us {
     display: flex;
-    justify-content: center;
     margin: 3rem auto;
-    max-width: 1000px;
+}
+
+.social-icon {
+    font-size: 2em;
 }
 
 .person {
@@ -273,7 +275,7 @@ footer {
     width: 100px;
 }
 
-.person h3, .person p, .person h4  {
+.person h3, .person p, .person h4, .person .social-icon {
     color: #000;
 }
 
@@ -305,12 +307,7 @@ footer {
 
 /* About Us */
 
-.about-us {
-    display: flex;
-    justify-content: space-between;
-    margin: 50px 0;
-}
-.person:hover h3, .person:hover p, .person:hover h4 {
+.person:hover h3, .person:hover p, .person:hover h4, .person:hover .social-icon {
     color: #fff;
 }
 .person {

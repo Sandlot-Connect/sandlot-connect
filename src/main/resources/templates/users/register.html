@@ -19,9 +19,9 @@
                         <input id="last-name" th:field="*{lastName}" />
                     </div>
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
-                        <label for="username">Email Address</label>
-                        <input id="username" th:field="*{username}" th:classappend="${usernameError != null} ? 'error-field' : ''"/>
-                        <span th:text="${usernameError}" class="error-message"></span>
+                        <label for="username">Username</label>
+                        <input id="username" th:field="*{username}"/>
+<!--                        <span th:text="${usernameError}" class="error-message"></span>-->
                     </div>
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                         <label for="description">About me</label>
@@ -33,23 +33,23 @@
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                         <label for="password">Password</label>
                         <div class="input-group justify-content-center">
-                            <input id="password" type="password" name="password" th:field="*{passwordForm}" th:classappend="${passwordError != null} ? 'error-field' : ''"/>
+                            <input id="password" type="password" name="password" th:field="*{password}"/>
                             <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('password')">
                                 <i class="fa-regular fa-eye-slash"></i>
                             </button>
                         </div>
-                        <span th:text="${passwordError}" class="error-message"></span>
+<!--                        <span th:text="${passwordError}" class="error-message"></span>-->
                     </div>
-                    <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
-                        <label for="confirm-password">Confirm Password</label>
-                        <div class="input-group justify-content-center">
-                            <input id="confirm-password" type="password" th:field="*{confirmPassword}" th:classappend="${confirmPasswordError != null} ? 'error-field' : ''"/>
-                            <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('confirm-password')">
-                                <i class="fa-regular fa-eye-slash"></i>
-                            </button>
-                        </div>
-                        <span th:text="${confirmPasswordError}" class="error-message"></span>
-                    </div>
+<!--                    <div class="mb-3 d-flex flex-column justify-content-center align-items-center">-->
+<!--                        <label for="confirm-password">Confirm Password</label>-->
+<!--                        <div class="input-group justify-content-center">-->
+<!--                            <input id="confirm-password" type="password"/>-->
+<!--                            <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('confirm-password')">-->
+<!--                                <i class="fa-regular fa-eye-slash"></i>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                        <span th:text="${confirmPasswordError}" class="error-message"></span>-->
+<!--                    </div>-->
                     <div class="mb-3 d-flex justify-content-center">
                         <input value="Submit" type="submit" />
                     </div>

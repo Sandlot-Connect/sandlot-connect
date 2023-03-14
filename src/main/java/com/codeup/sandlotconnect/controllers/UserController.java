@@ -2,8 +2,6 @@ package com.codeup.sandlotconnect.controllers;
 
 import com.codeup.sandlotconnect.models.User;
 import com.codeup.sandlotconnect.repositories.UserRepository;
-import jakarta.validation.ConstraintViolationException;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,45 +32,45 @@ public class UserController {
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("user", new User());
-        model.addAttribute("usernameError", null);
-        model.addAttribute("passwordError", null);
-        model.addAttribute("confirmPasswordError", null);
+//        model.addAttribute("usernameError", null);
+//        model.addAttribute("passwordError", null);
+//        model.addAttribute("confirmPasswordError", null);
 //        model.addAttribute("apiKey", apiKey);
         return "users/register";
     }
 
     @PostMapping("/register")
-    public String saveUser(@Valid @ModelAttribute User user, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors() && !user.getPasswordForm().equals(user.getConfirmPassword())) {
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                String errorMessage = error.getDefaultMessage();
-                if (error.getField().equals("username")) {
-                    model.addAttribute("usernameError", errorMessage);
-                } else if (error.getField().equals("passwordForm")) {
-                    model.addAttribute("passwordError", errorMessage);
-                } else if (error.getField().equals("confirmPassword")) {
-                    model.addAttribute("confirmPasswordError", errorMessage);
-                }
-            }
-            model.addAttribute("confirmPasswordError", "Passwords do not match");
-            return "users/register";
-        } else if (bindingResult.hasErrors()) {
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                String errorMessage = error.getDefaultMessage();
-                if (error.getField().equals("username")) {
-                    model.addAttribute("usernameError", errorMessage);
-                } else if (error.getField().equals("passwordForm")) {
-                    model.addAttribute("passwordError", errorMessage);
-                } else if (error.getField().equals("confirmPassword")) {
-                    model.addAttribute("confirmPasswordError", errorMessage);
-                }
-            }
-            return "users/register";
-        } else if (!user.getPasswordForm().equals(user.getConfirmPassword())) {
-            model.addAttribute("confirmPasswordError", "Passwords do not match");
-            return "users/register";
-        }
-        String hash = passwordEncoder.encode(user.getPasswordForm());
+    public String saveUser(@ModelAttribute User user, BindingResult bindingResult, Model model) {
+//        if (bindingResult.hasErrors() && !user.getPasswordForm().equals(user.getConfirmPassword())) {
+//            for (FieldError error : bindingResult.getFieldErrors()) {
+//                String errorMessage = error.getDefaultMessage();
+//                if (error.getField().equals("username")) {
+//                    model.addAttribute("usernameError", errorMessage);
+//                } else if (error.getField().equals("passwordForm")) {
+//                    model.addAttribute("passwordError", errorMessage);
+//                } else if (error.getField().equals("confirmPassword")) {
+//                    model.addAttribute("confirmPasswordError", errorMessage);
+//                }
+//            }
+//            model.addAttribute("confirmPasswordError", "Passwords do not match");
+//            return "users/register";
+//        } else if (bindingResult.hasErrors()) {
+//            for (FieldError error : bindingResult.getFieldErrors()) {
+//                String errorMessage = error.getDefaultMessage();
+//                if (error.getField().equals("username")) {
+//                    model.addAttribute("usernameError", errorMessage);
+//                } else if (error.getField().equals("passwordForm")) {
+//                    model.addAttribute("passwordError", errorMessage);
+//                } else if (error.getField().equals("confirmPassword")) {
+//                    model.addAttribute("confirmPasswordError", errorMessage);
+//                }
+//            }
+//            return "users/register";
+//        } else if (!user.getPasswordForm().equals(user.getConfirmPassword())) {
+//            model.addAttribute("confirmPasswordError", "Passwords do not match");
+//            return "users/register";
+//        }
+        String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/login";
