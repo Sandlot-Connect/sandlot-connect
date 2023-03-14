@@ -1,11 +1,6 @@
 package com.codeup.sandlotconnect.models;
 
-import com.codeup.sandlotconnect.validators.StrongPassword;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
@@ -16,7 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Email(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "Please enter valid email address.")
+//    @Email(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "Please enter valid email address.")
     @Column(nullable = false, unique = true)
     private String username;
 
@@ -26,13 +21,12 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Transient
-    @StrongPassword(message = "Password must be at least 8 characters and must contain at least 1 lower case, 1 upper case, 1 digit and 1 special character")
-    private String passwordForm;
-
-    @Transient
-    @NotBlank(message = "Confirm password is required.")
-    private String confirmPassword;
+//    @Transient
+//    private String passwordForm;
+//
+//    @Transient
+////    @NotBlank(message = "Confirm password is required.")
+//    private String confirmPassword;
 
     @Column(nullable = false)
     private String firstName;
@@ -97,41 +91,6 @@ public class User {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.isCaptain = isCaptain;
-        this.profilePictureUrl = profilePictureUrl;
-        this.team = team;
-        this.captainOfTeam = captainOfTeam;
-        this.posts = posts;
-        this.comments = comments;
-        this.requests = requests;
-    }
-
-    public User(long id, String username, String description, String password, String passwordForm, String confirmPassword, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, Team captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
-        this.id = id;
-        this.username = username;
-        this.description = description;
-        this.password = password;
-        this.passwordForm = passwordForm;
-        this.confirmPassword = confirmPassword;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.isCaptain = isCaptain;
-        this.profilePictureUrl = profilePictureUrl;
-        this.team = team;
-        this.captainOfTeam = captainOfTeam;
-        this.posts = posts;
-        this.comments = comments;
-        this.requests = requests;
-    }
-
-    public User(String username, String description, String password, String passwordForm, String confirmPassword, String firstName, String lastName, boolean isCaptain, String profilePictureUrl, Team team, Team captainOfTeam, List<Post> posts, List<Comment> comments, List<Request> requests) {
-        this.username = username;
-        this.description = description;
-        this.password = password;
-        this.passwordForm = passwordForm;
-        this.confirmPassword = confirmPassword;
         this.firstName = firstName;
         this.lastName = lastName;
         this.isCaptain = isCaptain;
@@ -259,21 +218,5 @@ public class User {
 
     public void setRequests(List<Request> requests) {
         this.requests = requests;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public String getPasswordForm() {
-        return passwordForm;
-    }
-
-    public void setPasswordForm(String passwordForm) {
-        this.passwordForm = passwordForm;
     }
 }
