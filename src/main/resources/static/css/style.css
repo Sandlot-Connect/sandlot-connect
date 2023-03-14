@@ -182,7 +182,7 @@ footer p {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: azure;
+    background-color: #1a2a3a;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -206,7 +206,8 @@ footer p {
 
 .open-btn {
     cursor: pointer;
-    background-color: azure;
+    background-color: #1a2a3a;
+    color: white;
 }
 
 #main {
