@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="~{partials :: head ('Welcome to my blog')}">
-</head>
+<head  th:replace="~{partials :: head ('title')}">
+    <title></title>
+    </head>
 <body>
 <nav th:replace="~{partials :: navbar}"></nav>
 <div class="wrapper">
@@ -21,11 +22,12 @@
                             <p th:text="${user.firstName}"></p>
                         </div>
                     </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <footer th:replace="~{partials :: footer}"></footer>
-            <div th:replace="~{partials :: js}"></div>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{partials :: footer}"></footer>
+<div th:replace="~{partials :: js}"></div>
 </body>
 </html>
