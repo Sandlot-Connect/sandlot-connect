@@ -30,7 +30,9 @@ public class TeamController {
 
     @GetMapping("/teams")
     public String showTeams(Model model) {
+        User currentUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         List<Team> teams = teamDao.findAll();
+        model.addAttribute("user", currentUser);
         model.addAttribute("teams", teams);
         return "teams/index";
     }

@@ -71,7 +71,7 @@ function hidePopup(userId) {
     let popup = $("#popup-" + userId);
     popup.hide();
 }
-
+//register page password visible
 function togglePasswordVisibility(fieldId) {
     let passwordInput = document.getElementById(fieldId);
     let passwordVisibilityButton = document.querySelector("#" + fieldId + " + .btn");
@@ -83,3 +83,10 @@ function togglePasswordVisibility(fieldId) {
         passwordVisibilityButton.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
     }
 }
+//navbar controls
+const hbBtn = document.getElementById('hb-btn');
+const navContainer = document.getElementById('nav');
+
+hbBtn.addEventListener('click', () => {
+    navContainer.classList.toggle('active');
+});
