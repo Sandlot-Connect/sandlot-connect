@@ -14,9 +14,12 @@
     <div class="close-btn" th:onclick="closeSidebar()">×</div>
     <div>
         <ul>
-            <li th:each="user : ${team.users}">
-                <button  th:text="${user.firstName}" type="button" class="btn btn-secondary" th:onclick="'showPopup(' + ${user.id} + ')'">
+            <li class="list-unstyled" th:each="user : ${team.users}">
+                <button class="btn-vanilla">
+                    <span th:text="${user.firstName}"></span>
+                    <i class="fa-solid fa-baseball icon-action" th:onclick="'showPopup(' + ${user.id} + ')'"></i>
                 </button>
+<!--                <button  th:text="${user.firstName}" type="button" class="btn-vanilla" th:onclick="'showPopup(' + ${user.id} + ')'"></button>-->
                 <div th:if="${#authentication.principal.isCaptain}" th:id="'popup-' + ${user.id}" style="display:none">
                     <h3>Remove Player</h3>
                     <form th:action="@{/teams/{id}/posts/{userId}/drop(id=${team.id}, userId=${user.id})}" th:class="'removePlayerForm-' + ${user.id}" method="post">
@@ -32,7 +35,7 @@
 </div>
 
 <div id="main">
-    <button class="open-btn" th:onclick="openSidebar()">Players<i class="fa-solid fa-caret-right"></i></button>
+    <button class="open-btn" th:onclick="openSidebar()"><i class="fas fa-bars icon-color"></i></button>
 </div>
 <div class="sidebar-closed wrapper">
     <div class="text-container parent">

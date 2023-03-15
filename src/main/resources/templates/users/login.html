@@ -6,7 +6,7 @@
 <nav th:replace="partials :: navbar"></nav>
 <div class="wrapper">
     <div class="text-container">
-        <h1>Log In</h1>
+        <h1>Login</h1>
         <div th:if="${param.error}">
             Invalid Username and Password.
         </div>
@@ -23,7 +23,7 @@
                 <label for="password">Password</label>
                 <input id="password" name="password" type="password"/>
             </div>
-            <input type="submit" value="Log In"/>
+            <input class="btn-vanilla" type="submit" value="Login"/>
         </form>
     </div>
 </div>
