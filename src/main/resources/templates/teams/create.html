@@ -5,24 +5,30 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <div class="wrapper">
-    <h3>What is the name of your team?</h3>
-    <form th:action="@{/teams/create}" method="post">
-        <label for="name">Name your team:</label>
-        <input type="text" name="name" id="name"><br><br>
-        <label for="description">Briefly describe your team:</label><br>
-        <textarea name="description" id="description" cols="50" rows="10"></textarea><br>
-        <h3>Where are you located?</h3>
-        <label for="city">City</label>
-        <input type="text" name="city" id="city">
-        <label for="state">State</label>
-        <input type="text" name="state" id="state"><br>
-        <br>
-        <h3>Upload a team photo if you have one.</h3><br>
-        <input type="hidden">
-        <i class=“fa-solid fa-baseball-bat-ball”></i>
-        <br><br>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="container d-flex justify-content-center">
+        <div class="row">
+            <div class="col">
+                <h3>What is the name of your team?</h3>
+                <form th:action="@{/teams/create}" method="post">
+                    <label for="name">Name your team:</label>
+                    <input type="text" name="name" id="name"><br><br>
+                    <label for="description">Briefly describe your team:</label><br>
+                    <textarea name="description" id="description" cols="50" rows="10"></textarea><br>
+                    <h3>Where are you located?</h3>
+                    <label for="city">City</label>
+                    <input type="text" name="city" id="city">
+                    <label for="state">State</label>
+                    <input type="text" name="state" id="state"><br>
+                    <br>
+                    <h3>Upload a team photo if you have one.</h3><br>
+                    <input type="hidden">
+                    <i class=“fa-solid fa-baseball-bat-ball”></i>
+                    <br><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: js"></div>

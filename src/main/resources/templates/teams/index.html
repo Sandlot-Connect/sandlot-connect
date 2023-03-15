@@ -6,24 +6,35 @@
 <nav th:replace="partials :: navbar"></nav>
 <div class="wrapper">
     <div class="text-container">
+
         <h1 sec:authorize="isAuthenticated()" th:text="'Welcome, ' + ${#authentication.principal.username} + '.'"></h1>
-        <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team == null}">Create or Request to join a team below.</p>
-        <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team != null}" th:text="'Your team is the ' + ${#authentication.principal.team.city} + ' ' + ${#authentication.principal.team.name} + '. Access your team posts by clicking on your team name in the navbar.'"></p>
-        <h1 sec:authorize="!isAuthenticated()" >Welcome, Guest.</h1>
+        <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team == null}">Create or Request to join
+            a team below.</p>
+        <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team != null}"
+           th:text="'Your team is the ' + ${#authentication.principal.team.city} + ' ' + ${#authentication.principal.team.name} + '. Access your team posts by clicking on your team name in the navbar.'"></p>
+        <a sec:authorize="isAuthenticated()" href="/teams/create" style="color:green"><h1>Create A Team</h1></a>
+        <h1 sec:authorize="!isAuthenticated()">Welcome, Guest.</h1>
         <p sec:authorize="!isAuthenticated()">Register or Login to join or create a team.</p>
-        <div th:each="team : ${teams}">
-            <a th:href="@{/teams/{id} (id = ${team.id})}"><h1 th:text="${team.name}"></h1></a>
-            <form sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team == null}" th:action="@{/teams/{id}/notifications (id=${team.id})}" method="post" class="request-form">
-                <button class="btn btn-secondary request-button">Request To Join This Team</button>
-                <br>
-            </form>
-            <div sec:authorize="isAuthenticated()" th:each="request : ${team.requests}">
-                <form th:if="${request.status == 'Pending' and request.user.username == #authentication.principal.username}" th:action="@{/teams/{id}/requests/{requestId}/cancel(id=${team.id}, requestId=${request.id})}" method="post" class="cancel-form">
-                    <button type="submit" class="btn btn-danger cancel-request">Cancel Request</button>
-                </form>
+        <div class="container d-flex justify-content-center">
+            <div class="row">
+                <div th:each="team : ${teams}" class="col-md-3 mb-3 d-flex flex-column justify-content-center align-items-center">
+                    <a th:href="@{/teams/{id} (id = ${team.id})}"><h1 th:text="${team.name}"></h1></a>
+                    <form sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team == null}"
+                          th:action="@{/teams/{id}/notifications (id=${team.id})}" method="post"
+                          class="request-form">
+                        <button class="btn btn-secondary request-button">Request To Join This Team</button>
+                        <br>
+                    </form>
+                    <div sec:authorize="isAuthenticated()" th:each="request : ${team.requests}">
+                        <form th:if="${request.status == 'Pending' and request.user.username == #authentication.principal.username}"
+                              th:action="@{/teams/{id}/requests/{requestId}/cancel(id=${team.id}, requestId=${request.id})}"
+                              method="post" class="cancel-form">
+                            <button type="submit" class="btn btn-danger cancel-request">Cancel Request</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <a sec:authorize="isAuthenticated()" href="/teams/create">Create A Team</a>
     </div>
 </div>
 <footer th:replace="partials :: footer"></footer>
