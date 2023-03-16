@@ -523,3 +523,68 @@ footer {
 .active {
     display: block;
 }
+
+.create-post {
+    width: 150px;
+    background: linear-gradient(yellow, red);
+    border: 2px solid green;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.delete-post {
+    width: 100px;
+    background:  linear-gradient(red, seagreen);
+    border: 2px solid olivedrab;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.edit-post {
+    width: 60px;
+    background: linear-gradient(to bottom right, lavender, teal);
+    border: 2px solid blue;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.reply-post {
+    width: 75px;
+    background: linear-gradient(to bottom right, royalblue, peachpuff);
+    border: 2px solid skyblue;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.submit-comment {
+    width: 100px;
+    background: linear-gradient(goldenrod, turquoise);
+    border: 2px solid skyblue;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.save-post {
+    width: 100px;
+    background: linear-gradient(tan, turquoise);
+    border: 2px solid skyblue;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}

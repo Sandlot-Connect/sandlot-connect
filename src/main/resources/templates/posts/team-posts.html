@@ -52,7 +52,7 @@
                 <label for="content" class="form-label">Content:</label>
                 <textarea class="form-control m-auto w-75" id="content" name="content" rows="5" placeholder="Post body..." required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Create Post</button>
+            <button type="submit" class="btn create-post">Create Post</button>
         </form>
         </div>
         <div class="div4">
@@ -60,7 +60,7 @@
             <li th:each="post : ${posts}" class="card m-5 w-75">
                 <div th:id="'post-' + ${post.id}">
 
-                    <h3 th:text="${post.title}" class="post-title"></h3>
+                    <h3 th:text="${post.title}" class="post-title mt-2"></h3>
                     <form th:action="@{/teams/{id}/posts/{postId}/edit(id=${team.id}, postId=${post.id})}" method="post" class="save-form">
                         <label class="title-label" for="post-title">Title</label>
                         <input th:value="${post.title}" id="post-title" name="post-title" type="text" class="title-input">
@@ -71,12 +71,12 @@
 
                         <p th:text="'Created By ' + ${post.user.firstName} + ' at ' + ${post.timestamp}"></p>
 
-                        <button class="btn btn-primary save-button" th:if="${post.user.username} == ${#authentication.principal.username}">Save</button>
+                        <button class="btn save-button save-post" th:if="${post.user.username} == ${#authentication.principal.username}">Save</button>
                     </form>
-                    <button th:if="${post.user.username == #authentication.principal.username}" th:onclick="'toggleEdit(' + ${post.id} + ')'" class="btn btn-secondary edit-button">Edit</button>
+                    <button th:if="${post.user.username == #authentication.principal.username}" th:onclick="'toggleEdit(' + ${post.id} + ')'" class="btn edit-button edit-post">Edit</button>
 
                     <form th:action="@{/teams/{id}/posts/{postId}/delete(id=${team.id}, postId=${post.id})}" method="post">
-                        <button class="btn btn-danger" th:if="${post.user.username} == ${#authentication.principal.username}">Delete</button>
+                        <button class="btn delete-post" th:if="${post.user.username} == ${#authentication.principal.username}">Delete</button>
                     </form>
                     <div th:id="'comments-' + ${post.id}">
                         <h4>Comments:</h4>
@@ -85,18 +85,18 @@
                                 <p th:text="${comment.content}"></p>
                                 <p th:text="'Commented by ' + ${comment.user.firstName}"></p>
                                 <form th:action="@{/teams/{id}/posts/{postId}/comments/{commentId}/delete(id=${team.id}, postId=${post.id}, commentId=${comment.id})}" method="post">
-                                    <button class="btn btn-danger" th:if="${comment.user.username} == ${#authentication.principal.username}">Delete</button>
+                                    <button class="btn delete-post" th:if="${comment.user.username} == ${#authentication.principal.username}">Delete</button>
                                 </form>
                             </li>
                         </ul>
                     </div>
-                    <button class="btn btn-secondary reply-button">Reply</button>
+                    <button class="btn reply-post">Reply</button>
                     <div class="comment-form" style="display: none">
                         <form th:action="@{/teams/{id}/posts/{postId}/comments/create(id=${team.id}, postId=${post.id})}" method="post">
                             <div class="mb-3">
                                 <textarea name="comment-content" id="comment-content" rows="5" class="form-control" placeholder="Comment here..." required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit Comment</button>
+                            <button type="submit" class="btn submit-comment">Submit Comment</button>
                         </form>
                     </div>
                 </div>
