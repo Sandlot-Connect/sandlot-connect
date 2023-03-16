@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="~{partials :: head ('Administration Page')}">
+<head th:replace="~{partials :: head ('Admin Page')}">
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
@@ -19,7 +19,7 @@
                     </div>
                     </form>
                 </li>
-                <li th:if="${team.requests.isEmpty()}">
+                <li th:if="${team.requests.size() == 0}">
                     <div>You have no pending requests right now. Check back at a later time.</div>
                 </li>
             </ul>

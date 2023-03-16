@@ -1,28 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="~{partials :: head ('Welcome to my blog')}">
+<head th:replace="~{partials :: head ('Teams')}">
 </head>
 <body>
-<nav th:replace="partials :: navbar"></nav>
+<nav>
+    <a href="/" class="logo nav-links nav-text">
+        <span>Sandlot</span> Connect
+    </a>
+    <button class="hb-button" id="hb-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-container" id="nav">
+        <li sec:authorize="!isAuthenticated()">
+            <a href="/" class="nav-links nav-text">Home</a>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+            <a class="nav-links nav-text" th:if="${user.isCaptain}" th:href="@{/teams/{id}/admin(id=${user.team.id})}">Admin page</a>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+            <a th:if="${user.team != null}" th:href="@{/teams/{id}/posts(id=${user.team.id})}" th:text="${user.team.name}" class="nav-links nav-text"></a>
+            <a class="nav-links nav-text" th:if="${user.team == null}" th:href="@{/teams}">Join or create a team</a>
+        </li>
+        <li>
+            <a href="/teams" class="nav-links nav-text">Teams</a>
+        </li>
+        <li>
+            <a href="/about-us" class="nav-links nav-text">About us</a>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+            <a href="/profile" class="nav-links nav-text"><i class="fa-solid fa-user"></i></a>
+        </li>
+        <li sec:authorize="!isAuthenticated()">
+            <a class="nav-links nav-text" href="/register">Register</a>
+        </li>
+        <li sec:authorize="!isAuthenticated()">
+            <a class="nav-links nav-text" href="/login">Login</a>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post" id="logout-form" th:hidden="${true}">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+            <a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
+        </li>
+    </ul>
+</nav>
 <div class="wrapper">
     <div class="text-container">
-
-        <h1 sec:authorize="isAuthenticated()" th:text="'Welcome, ' + ${#authentication.principal.username} + '.'"></h1>
-        <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team == null}">Create or Request to join
-            a team below.</p>
-        <p sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team != null}"
-           th:text="'Your team is the ' + ${#authentication.principal.team.city} + ' ' + ${#authentication.principal.team.name} + '. Access your team posts by clicking on your team name in the navbar.'"></p>
-        <a sec:authorize="isAuthenticated()" href="/teams/create" style="color:green"><h1>Create A Team</h1></a>
+        <h1 sec:authorize="isAuthenticated()" th:text="'Welcome, ' + ${user.username} + '.'"></h1>
+        <p sec:authorize="isAuthenticated()" th:if="${user.team == null}">Create or Request to join a team below.</p>
+        <p sec:authorize="isAuthenticated()" th:if="${user.team != null}"
+           th:text="'Your team is the ' + ${user.team.city} + ' ' + ${user.team.name} + '. Access your team posts by clicking on your team name in the navbar.'"></p>
+        <div class="d-flex justify-content-center">
+        <div class="text-container button-container mb-4">
+            <a th:if="${user.team == null}" style="color: #F2E8DC;" class="nav-link create-link btn-create" sec:authorize="isAuthenticated()" href="/teams/create">
+                <h1>Create Team<i class="fas fa-plus-circle" style="color: #1DB954;"></i></h1>
+            </a>
+        </div>
+        </div>
         <h1 sec:authorize="!isAuthenticated()">Welcome, Guest.</h1>
         <p sec:authorize="!isAuthenticated()">Register or Login to join or create a team.</p>
+        <div class="container-background">
+            <h2>View all teams registered with Sandlot Connect below</h2>
         <div class="container d-flex justify-content-center">
-            <div class="row">
-                <div th:each="team : ${teams}" class="col-md-3 mb-3 d-flex flex-column justify-content-center align-items-center">
+            <div class="row p-2">
+                <div th:each="team : ${teams}" class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 p-3 mb-3">
                     <a th:href="@{/teams/{id} (id = ${team.id})}"><h1 th:text="${team.name}"></h1></a>
                     <form sec:authorize="isAuthenticated()" th:if="${#authentication.principal.team == null}"
                           th:action="@{/teams/{id}/notifications (id=${team.id})}" method="post"
                           class="request-form">
-                        <button class="btn btn-secondary request-button">Request To Join This Team</button>
+                        <div class="button-container">
+                            <button class="create-link btn-create request-button btn-hover" style="color: black;
+    font-weight: bold; z-index: 1; background-color: #FCBF49">Request To Join This Team</button>
+                        </div>
                         <br>
                     </form>
                     <div sec:authorize="isAuthenticated()" th:each="request : ${team.requests}">
@@ -33,7 +82,9 @@
                         </form>
                     </div>
                 </div>
+<!--                <div th:if="${teams.isEmpty()}">There are no teams at the moment. Be the first to create one!</div>-->
             </div>
+        </div>
         </div>
     </div>
 </div>
