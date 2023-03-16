@@ -56,7 +56,7 @@
                th:text="'Your team is the ' + ${user.team.city} + ' ' + ${user.team.name} + '. Access your team posts by clicking on your team name in the navbar.'"></p>
             <div class="d-flex justify-content-center">
                 <div class="text-container button-container mb-4">
-                    <a th:if="${user.team == null}" style="color: #F2E8DC;" class="nav-link create-link btn-create"
+                    <a th:if="${user.team == null}" style="color: black; z-index: 1;" class="btn-hover nav-link create-link btn-create"
                        sec:authorize="isAuthenticated()" href="/teams/create">
                         <h1>Create Team<i class="fas fa-plus-circle" style="color: #1DB954;"></i></h1>
                     </a>
