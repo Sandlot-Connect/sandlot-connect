@@ -14,6 +14,10 @@
     padding: 2em;
 }
 
+a.logo {
+    font-size: 1.5em;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #a4764a;
@@ -22,7 +26,7 @@ body {
 }
 
 .container-background {
-    background-color: #f2f2f2;
+    background-color: #F2E8DC;
     padding: 20px;
 }
 
@@ -220,6 +224,71 @@ footer p {
     padding-top: 60px;
 }
 
+/*.create-link {*/
+/*    display: inline-block;*/
+/*    padding: 0.5rem 1rem;*/
+/*    border: none;*/
+/*    background: linear-gradient(243deg, #FCBF47 0%, #003049);*/
+/*    color: #fff;*/
+/*    box-shadow: 0px 2px 2px rgba(0,0,0,0.2);*/
+/*    transition: all 0.1s ease-in-out;*/
+/*}*/
+
+/*.create-link:hover {*/
+/*    transform: scale(1.05);*/
+/*    box-shadow: 0px 4px 4px rgba(0,0,0,0.4);*/
+/*    background: linear-gradient(22deg, #111 50%,#111 0%,#444, #444 0);*/
+/*    color: #fff;*/
+/*}*/
+
+/*button styling */
+/*https://codepen.io/Freeps2/pen/xxapoyY*/
+/**/
+.button-container {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: contents;
+}
+.btn-create{
+    position:relative;
+    display:block;
+    color:white;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 30px 0;
+    padding: 15px 50px;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .8s all ease;
+}
+.create-link{
+    border: 2px solid #FCBF49;
+}
+
+.btn-create::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: all 0.6s ease;
+}
+.create-link::before{
+    background: #003049;
+    width:0;
+    height: 100%;
+}
+.create-link:hover::before{
+    width: 100%;
+}
+.btn-hover:hover {
+    color: #D62828!important;
+}
+/**/
+
 .sidebar a {
     padding: 8px 8px 8px 16px;
     text-decoration: none;
@@ -256,6 +325,10 @@ a > h1 {
     display: contents;
 }
 
+.create-link {
+
+}
+
 div a {
     color: #F77F00;
     transition: color 0.4s ease;
@@ -286,7 +359,7 @@ div a {
 .hb-button {
     font-size: 30px;
     cursor: pointer;
-    background-color: #FCBF49;
+    background-color: #003049;
     color: white;
     border: none;
     width: 50px;
@@ -295,8 +368,16 @@ div a {
     border-radius: 40px;
 }
 
+.hb-button > i {
+    color: white;
+}
+
 .hb-button:hover {
     background-color: #EAE2B7;
+}
+
+.hb-button:hover i {
+    color: #D62828;
 }
 
 .open-btn:hover {
@@ -496,7 +577,7 @@ footer {
         margin-right: auto;
         float: right;
         position: relative;
-        bottom: 13px;
+        bottom: 8px;
     }
     .logo {
         display: inline-block;
@@ -522,4 +603,69 @@ footer {
 
 .active {
     display: block;
+}
+
+.create-post {
+    width: 150px;
+    background: linear-gradient(yellow, red);
+    border: 2px solid green;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.delete-post {
+    width: 100px;
+    background:  linear-gradient(red, seagreen);
+    border: 2px solid olivedrab;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.edit-post {
+    width: 60px;
+    background: linear-gradient(to bottom right, lavender, teal);
+    border: 2px solid blue;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.reply-post {
+    width: 75px;
+    background: linear-gradient(to bottom right, royalblue, peachpuff);
+    border: 2px solid skyblue;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.submit-comment {
+    width: 100px;
+    background: linear-gradient(goldenrod, turquoise);
+    border: 2px solid skyblue;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.save-post {
+    width: 100px;
+    background: linear-gradient(tan, turquoise);
+    border: 2px solid skyblue;
+    border-radius: 3px;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
 }

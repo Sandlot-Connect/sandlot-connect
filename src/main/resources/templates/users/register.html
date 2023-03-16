@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head ('Home')">
+<head th:replace="partials :: head ('Register')">
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
@@ -9,6 +9,7 @@
         <div class="col-md-8">
             <div class="text-container">
                 <h1>Create an account</h1>
+                <div class="container-background">
                 <form th:action="@{/register}" method="POST" th:object="${user}">
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                         <label for="first-name">First Name</label>
@@ -25,7 +26,7 @@
                     </div>
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                         <label for="description">About me</label>
-                        <textarea id="description" th:field="*{description}" cols="75"></textarea>
+                        <textarea id="description" th:field="*{description}" cols="50" rows="4"></textarea>
                     </div>
 <!--                    <br>-->
 <!--                    <label for="profile-pic">Profile Picture</label>-->
@@ -54,6 +55,7 @@
                         <input class="btn-vanilla" value="Submit" type="submit" />
                     </div>
                 </form>
+                </div>
 <!--                <input type="hidden" id="apiKey" th:value="${apiKey}">-->
             </div>
         </div>
