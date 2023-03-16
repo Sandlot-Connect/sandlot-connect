@@ -7,27 +7,27 @@
 <div class="wrapper container">
     <div class="text-container row justify-content-center">
         <div class="col-md-8 d-flex flex-column align-items-center">
-            <h1 th:text="|Howdy, ${user.firstName}!|"></h1>
             <div class="container-background w-100">
+            <h1 th:text="|Howdy, ${user.firstName}!|"></h1>
                 <h2>Profile</h2>
                 <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                     <label class="m-2" for="username">Username</label>
-                    <input disabled id="username" name="username" class="w-50" th:value="${user.username}"/>
+                    <input disabled id="username" name="username" class="form-control" th:value="${user.username}"/>
                 </div>
 
                 <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                     <label class="m-2" for="first-name">First Name</label>
-                    <input disabled id="first-name" name="firstName" class="w-50" th:value="${user.firstName}"/>
+                    <input disabled id="first-name" name="firstName" class="form-control" th:value="${user.firstName}"/>
                 </div>
 
                 <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                     <label class="m-2" for="last-name">Last Name</label>
-                    <input disabled id="last-name" name="lastName" class="w-50" th:value="${user.lastName}"/>
+                    <input disabled id="last-name" name="lastName" class="form-control" th:value="${user.lastName}"/>
                 </div>
 
                 <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                     <label class="m-2" for="description">About me</label>
-                    <textarea disabled id="description" name="description" class="w-50" th:text="${user.description}"></textarea>
+                    <textarea disabled id="description" name="description" class="form-control" th:text="${user.description}"></textarea>
                 </div>
                 <!--            <label for="profile-pic">Profile Picture</label>-->
                 <!--            <input id="profile-pic" type="file" th:field="*{}" />-->

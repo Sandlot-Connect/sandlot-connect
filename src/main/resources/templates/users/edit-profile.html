@@ -7,28 +7,28 @@
 <div class="wrapper container">
     <div class="text-container row justify-content-center">
         <div class="col-md-8 d-flex flex-column align-items-center">
-            <h1 th:text="|Howdy, ${user.firstName}!|"></h1>
             <div class="container-background w-100">
+                <h1 th:text="|Howdy, ${user.firstName}!|"></h1>
                 <h2>Edit profile</h2>
                 <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
-                    <label class="m-2" for="username">Email Address</label>
-                    <input disabled id="username" name="username" th:value="${user.username}"/>
+                    <label class="m-2" for="username">Username</label>
+                    <input class="form-control" disabled id="username" name="username" th:value="${user.username}"/>
                 </div>
 
                 <form th:action="@{/profile/edit}" method="POST" th:object="${user}">
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                         <label class="m-2" for="first-name">First Name</label>
-                        <input id="first-name" name="firstName" th:value="${user.firstName}" th:field="*{firstName}"/>
+                        <input class="form-control" id="first-name" name="firstName" th:value="${user.firstName}" th:field="*{firstName}"/>
                     </div>
 
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                         <label class="m-2" for="last-name">Last Name</label>
-                        <input id="last-name" name="lastName" th:value="${user.lastName}" th:field="*{lastName}"/>
+                        <input class="form-control" id="last-name" name="lastName" th:value="${user.lastName}" th:field="*{lastName}"/>
                     </div>
 
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                         <label class="m-2" for="description">About me</label>
-                        <textarea id="description" name="description" th:value="${user.description}" th:field="*{description}"></textarea>
+                        <textarea class="form-control" id="description" name="description" th:value="${user.description}" th:field="*{description}"></textarea>
                     </div>
                     <input style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
                            class="create-link btn-create btn-hover mb-3 m-auto w-50" value="Submit" type="submit"/>

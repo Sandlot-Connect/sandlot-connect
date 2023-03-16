@@ -6,19 +6,30 @@
 <nav th:replace="partials :: navbar"></nav>
 <div class="wrapper">
     <div class="text-container">
-        <h1 th:text="${team.name}"></h1>
         <div class="container-background">
-        <h2>Players who have requested to join the team.</h2>
+            <h1 th:text="${team.name}"></h1>
+            <h2>Players who have requested to join the team.</h2>
             <ul class="">
                 <li th:if="${request.status == 'Pending'}" th:each="request : ${team.requests}">
-                    <form th:action="@{/teams/{id}/admin/{requestId} (id=${team.id}, requestId=${request.id})}" method="post">
-                    <div>
-                        <p th:text="${request.user.firstName} + ' ' + ${request.user.lastName} + ' has requested to join this team'"></p>
-                        <div class="d-flex justify-content-evenly">
-                            <button sec:authorize="isAuthenticated()" th:if="${request.status == 'Pending'} and ${#authentication.principal.isCaptain}" name="status" value="accept" style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;" class="create-link btn-create btn-hover">Accept</button>
-                            <button sec:authorize="isAuthenticated()" th:if="${request.status == 'Pending'} and ${#authentication.principal.isCaptain}" name="status" value="decline" style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;" class="create-link btn-create btn-hover">Decline</button>
+                    <form th:action="@{/teams/{id}/admin/{requestId} (id=${team.id}, requestId=${request.id})}"
+                          method="post">
+                        <div>
+                            <p th:text="${request.user.firstName} + ' ' + ${request.user.lastName} + ' has requested to join this team'"></p>
+                            <div class="d-flex justify-content-evenly">
+                                <button sec:authorize="isAuthenticated()"
+                                        th:if="${request.status == 'Pending'} and ${#authentication.principal.isCaptain}"
+                                        name="status" value="accept"
+                                        style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
+                                        class="create-link btn-create btn-hover">Accept
+                                </button>
+                                <button sec:authorize="isAuthenticated()"
+                                        th:if="${request.status == 'Pending'} and ${#authentication.principal.isCaptain}"
+                                        name="status" value="decline"
+                                        style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
+                                        class="create-link btn-create btn-hover">Decline
+                                </button>
+                            </div>
                         </div>
-                    </div>
                     </form>
                 </li>
                 <li th:if="${team.requests.size() == 0}">

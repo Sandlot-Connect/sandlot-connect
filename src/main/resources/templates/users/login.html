@@ -4,7 +4,7 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<div class="wrapper">
+<div class="wrapper container">
     <div class="text-container container-background">
         <h1>Login</h1>
         <div th:if="${param.error}">
@@ -17,11 +17,11 @@
         <form th:action="@{/login}" method="post">
             <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                 <label for="username">Username</label>
-                <input id="username" name="username" type="text"/>
+                <input class="form-control" id="username" name="username" type="text"/>
             </div>
             <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                 <label for="password">Password</label>
-                <input id="password" name="password" type="password"/>
+                <input class="form-control" id="password" name="password" type="password"/>
             </div>
             <button style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
                     class="create-link btn-create btn-hover m-auto" type="submit">Login</button>

@@ -6,8 +6,8 @@
 <div class="wrapper">
     <div class="text-container">
         <div>
-            <h1 th:text="${team.city} + ' ' + ${team.name}"></h1>
             <div class="container-background">
+                <h1 th:text="${team.city} + ' ' + ${team.name}"></h1>
                 <h2 th:text="'The team captain is ' + ${team.captain.firstName} + ' ' + ${team.captain.lastName}"></h2>
                 <h2>Players</h2>
                 <div class="container d-flex justify-content-center">

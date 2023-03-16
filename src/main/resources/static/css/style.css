@@ -354,6 +354,7 @@ div a {
     height: 60px;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
     border-radius: 40px;
+    position: fixed;
 }
 
 .hb-button {
@@ -477,7 +478,7 @@ footer {
     background-color: #F2E8DC;
     border: 0.1em solid #ccc;
     border-radius: 1em;
-    box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.5);
     margin: 1em;
     padding: 2em;
     text-align: center;
@@ -524,7 +525,7 @@ footer {
 /* About Us */
 
 .person {
-    border: 1px solid #ccc;
+    border: 2px solid black;
     padding: 20px;
     width: 30%;
 }
