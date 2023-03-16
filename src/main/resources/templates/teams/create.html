@@ -7,24 +7,24 @@
 <div class="wrapper">
     <div class="container d-flex justify-content-center">
         <div class="row">
-            <div class="col">
+            <div class="col wrapper container-background">
                 <h3>What is the name of your team?</h3>
                 <form th:action="@{/teams/create}" method="post">
-                    <label for="name">Name your team:</label>
+                    <label style="font-weight: bold" for="name">Name your team:</label>
                     <input type="text" name="name" id="name"><br><br>
-                    <label for="description">Briefly describe your team:</label><br>
+                    <label style="font-weight: bold" for="description">Briefly describe your team:</label><br>
                     <textarea name="description" id="description" cols="50" rows="10"></textarea><br>
                     <h3>Where are you located?</h3>
-                    <label for="city">City</label>
+                    <label style="font-weight: bold" for="city">City</label>
                     <input type="text" name="city" id="city">
-                    <label for="state">State</label>
+                    <label style="font-weight: bold" for="state">State</label>
                     <input type="text" name="state" id="state"><br>
                     <br>
 <!--                    <h3>Upload a team photo if you have one.</h3><br>-->
-                    <input type="hidden">
-                    <i class=“fa-solid fa-baseball-bat-ball”></i>
-                    <br><br>
-                    <button type="submit">Submit</button>
+<!--                    <input type="hidden">-->
+<!--                    <i class=“fa-solid fa-baseball-bat-ball”></i>-->
+<!--                    <br><br>-->
+                    <button type="submit" style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;" class="create-link btn-create btn-hover m-auto">Submit</button>
                 </form>
             </div>
         </div>

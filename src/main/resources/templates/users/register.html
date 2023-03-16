@@ -13,15 +13,15 @@
                 <form th:action="@{/register}" method="POST" th:object="${user}">
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                         <label for="first-name">First Name</label>
-                        <input id="first-name" th:field="*{firstName}" />
+                        <input required id="first-name" th:field="*{firstName}" />
                     </div>
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                         <label for="last-name">Last Name</label>
-                        <input id="last-name" th:field="*{lastName}" />
+                        <input required id="last-name" th:field="*{lastName}" />
                     </div>
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                         <label for="username">Username</label>
-                        <input id="username" th:field="*{username}"/>
+                        <input required id="username" th:field="*{username}"/>
 <!--                        <span th:text="${usernameError}" class="error-message"></span>-->
                     </div>
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
@@ -34,7 +34,7 @@
                     <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                         <label for="password">Password</label>
                         <div class="input-group justify-content-center">
-                            <input id="password" type="password" name="password" th:field="*{password}"/>
+                            <input required id="password" type="password" name="password" th:field="*{password}"/>
                             <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('password')">
                                 <i class="fa-regular fa-eye-slash"></i>
                             </button>

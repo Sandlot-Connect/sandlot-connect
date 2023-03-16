@@ -78,7 +78,7 @@
                         <form th:if="${request.status == 'Pending' and request.user.username == #authentication.principal.username}"
                               th:action="@{/teams/{id}/requests/{requestId}/cancel(id=${team.id}, requestId=${request.id})}"
                               method="post" class="cancel-form">
-                            <button type="submit" class="btn btn-danger cancel-request">Cancel Request</button>
+                            <button type="submit" style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;" class="cancel-request create-link btn-create btn-hover m-auto">Cancel Request</button>
                         </form>
                     </div>
                 </div>

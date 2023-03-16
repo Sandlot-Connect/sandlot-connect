@@ -14,8 +14,10 @@
                     <form th:action="@{/teams/{id}/admin/{requestId} (id=${team.id}, requestId=${request.id})}" method="post">
                     <div>
                         <p th:text="${request.user.firstName} + ' ' + ${request.user.lastName} + ' has requested to join this team'"></p>
-                        <button sec:authorize="isAuthenticated()" th:if="${request.status == 'Pending'} and ${#authentication.principal.isCaptain}" name="status" value="accept" class="btn btn-primary">Accept</button>
-                        <button sec:authorize="isAuthenticated()" th:if="${request.status == 'Pending'} and ${#authentication.principal.isCaptain}" name="status" value="decline" class="btn btn-danger">Decline</button>
+                        <div class="d-flex justify-content-evenly">
+                            <button sec:authorize="isAuthenticated()" th:if="${request.status == 'Pending'} and ${#authentication.principal.isCaptain}" name="status" value="accept" style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;" class="create-link btn-create btn-hover">Accept</button>
+                            <button sec:authorize="isAuthenticated()" th:if="${request.status == 'Pending'} and ${#authentication.principal.isCaptain}" name="status" value="decline" style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;" class="create-link btn-create btn-hover">Decline</button>
+                        </div>
                     </div>
                     </form>
                 </li>

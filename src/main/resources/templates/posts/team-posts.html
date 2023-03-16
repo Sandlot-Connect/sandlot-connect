@@ -19,15 +19,23 @@
                     <span th:text="${user.firstName}"></span>
                     <i class="fa-solid fa-x icon-action" th:onclick="'showPopup(' + ${user.id} + ')'"></i>
                 </button>
-<!--                <button  th:text="${user.firstName}" type="button" class="btn-vanilla" th:onclick="'showPopup(' + ${user.id} + ')'"></button>-->
+                <!--                <button  th:text="${user.firstName}" type="button" class="btn-vanilla" th:onclick="'showPopup(' + ${user.id} + ')'"></button>-->
                 <div th:if="${#authentication.principal.isCaptain}" th:id="'popup-' + ${user.id}" style="display:none">
                     <h3 style="color: white">Remove Player</h3>
-                    <form th:action="@{/teams/{id}/posts/{userId}/drop(id=${team.id}, userId=${user.id})}" th:class="'removePlayerForm-' + ${user.id}" method="post">
+                    <form th:action="@{/teams/{id}/posts/{userId}/drop(id=${team.id}, userId=${user.id})}"
+                          th:class="'removePlayerForm-' + ${user.id}" method="post">
                         <input type="hidden" name="teamId" id="teamId">
                         <input type="hidden" name="userId" id="userId">
                         <div class="button-container">
-                            <button type="submit" style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;" class="create-link btn-create btn-hover">Remove</button>
-                            <button type="button" style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;" class="create-link btn-create btn-hover" th:onclick="'hidePopup(' + ${user.id} + ')'">Cancel</button>
+                            <button type="submit"
+                                    style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
+                                    class="create-link btn-create btn-hover">Remove
+                            </button>
+                            <button type="button"
+                                    style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
+                                    class="create-link btn-create btn-hover"
+                                    th:onclick="'hidePopup(' + ${user.id} + ')'">Cancel
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -42,69 +50,104 @@
 <div class="sidebar-closed wrapper">
     <div class="text-container parent">
         <div class="div2">
-    <h1 th:text="${team.city} + ' ' + ${team.name}"></h1>
+            <h1 th:text="${team.city} + ' ' + ${team.name}"></h1>
         </div>
         <div class="div3">
-        <form method="post" th:action="@{/teams/{id}/posts/create(id=${team.id})}">
-            <div class="mb-3">
-                <label for="title" class="form-label">Title:</label>
-                <input type="text" class="form-control m-auto w-75" id="title" name="title" placeholder="Post title..." required>
-            </div>
-            <div class="mb-3">
-                <label for="content" class="form-label">Content:</label>
-                <textarea class="form-control m-auto w-75" id="content" name="content" rows="5" placeholder="Post body..." required></textarea>
-            </div>
-            <button type="submit" class="btn create-post">Create Post</button>
-        </form>
+            <form method="post" th:action="@{/teams/{id}/posts/create(id=${team.id})}">
+                <div class="mb-3">
+                    <label for="title" class="form-label" style="font-weight: bold;
+    font-size: 2em;">Title:</label>
+                    <input type="text" class="form-control m-auto w-75" id="title" name="title"
+                           placeholder="Post title..." required>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label" style="font-weight: bold;
+    font-size: 2em;">Content:</label>
+                    <textarea class="form-control m-auto w-75" id="content" name="content" rows="5"
+                              placeholder="Post body..." required></textarea>
+                </div>
+                <button type="submit" style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
+                        class="create-link btn-create btn-hover m-auto">Create Post
+                </button>
+            </form>
         </div>
         <div class="div4">
-        <ul class="p-0 d-flex flex-column align-items-center justify-content-center list-unstyled">
-            <li th:each="post : ${posts}" class="card m-5 w-75">
-                <div th:id="'post-' + ${post.id}">
+            <ul class="p-0 d-flex flex-column align-items-center justify-content-center list-unstyled">
+                <li th:each="post : ${posts}" class="card m-5 w-75">
+                    <div th:id="'post-' + ${post.id}">
 
-                    <h3 th:text="${post.title}" class="post-title mt-2"></h3>
-                    <form th:action="@{/teams/{id}/posts/{postId}/edit(id=${team.id}, postId=${post.id})}" method="post" class="save-form">
-                        <label class="title-label" for="post-title">Title</label>
-                        <input th:value="${post.title}" id="post-title" name="post-title" type="text" class="title-input">
+                        <h3 th:text="${post.title}" class="post-title mt-2"></h3>
+                        <form th:action="@{/teams/{id}/posts/{postId}/edit(id=${team.id}, postId=${post.id})}"
+                              method="post" class="save-form">
+                            <label class="title-label" for="post-title">Title</label>
+                            <input th:value="${post.title}" id="post-title" name="post-title" type="text"
+                                   class="title-input">
 
-                        <p th:text="${post.content}" class="post-content"></p>
-                        <label class="content-label" for="post-content">Content</label>
-                        <textarea th:text="${post.content}" id="post-content" name="post-content" rows="5" type="text" class="content-textarea"></textarea>
+                            <p th:text="${post.content}" class="post-content"></p>
+                            <label class="content-label" for="post-content">Content</label>
+                            <textarea th:text="${post.content}" id="post-content" name="post-content" rows="5"
+                                      type="text" class="content-textarea"></textarea>
 
-                        <p th:text="'Created By ' + ${post.user.firstName} + ' at ' + ${post.timestamp}"></p>
-
-                        <button class="btn save-button save-post" th:if="${post.user.username} == ${#authentication.principal.username}">Save</button>
-                    </form>
-                    <button th:if="${post.user.username == #authentication.principal.username}" th:onclick="'toggleEdit(' + ${post.id} + ')'" class="btn edit-button edit-post">Edit</button>
-
-                    <form th:action="@{/teams/{id}/posts/{postId}/delete(id=${team.id}, postId=${post.id})}" method="post">
-                        <button class="btn delete-post" th:if="${post.user.username} == ${#authentication.principal.username}">Delete</button>
-                    </form>
-                    <div th:id="'comments-' + ${post.id}">
-                        <h4>Comments:</h4>
-                        <ul class="p-0 list-unstyled">
-                            <li th:each="comment: ${post.comments}" class="card m-3">
-                                <p th:text="${comment.content}"></p>
-                                <p th:text="'Commented by ' + ${comment.user.firstName}"></p>
-                                <form th:action="@{/teams/{id}/posts/{postId}/comments/{commentId}/delete(id=${team.id}, postId=${post.id}, commentId=${comment.id})}" method="post">
-                                    <button class="btn delete-post" th:if="${comment.user.username} == ${#authentication.principal.username}">Delete</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                    <button class="btn reply-button reply-post">Reply</button>
-                    <div class="comment-form" style="display: none">
-                        <form th:action="@{/teams/{id}/posts/{postId}/comments/create(id=${team.id}, postId=${post.id})}" method="post">
-                            <div class="mb-3">
-                                <textarea name="comment-content" id="comment-content" rows="5" class="form-control" placeholder="Comment here..." required></textarea>
+                            <p id="timestamp" th:text="'Created By ' + ${post.user.firstName} + ' at ' + ${post.timestamp}"></p>
+                            <div class="d-flex justify-content-center">
+                                <button style="display: none; font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
+                                        class="create-link btn-create btn-hover save-button"
+                                        th:if="${post.user.username} == ${#authentication.principal.username}">Save
+                                </button>
                             </div>
-                            <button type="submit" class="btn submit-comment">Submit Comment</button>
                         </form>
+                        <div class="d-flex align-items-center" style="flex-wrap: wrap; justify-content: space-evenly;">
+                            <button th:if="${post.user.username == #authentication.principal.username}"
+                                    th:onclick="'toggleEdit(' + ${post.id} + ')'"
+                                    style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
+                                    class="create-link btn-create btn-hover edit-button">Edit
+                            </button>
+
+                            <form th:action="@{/teams/{id}/posts/{postId}/delete(id=${team.id}, postId=${post.id})}"
+                                  method="post">
+                                <button style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
+                                        class="create-link btn-create btn-hover m-auto"
+                                        th:if="${post.user.username} == ${#authentication.principal.username}">Delete
+                                </button>
+                            </form>
+                        </div>
+                        <div th:id="'comments-' + ${post.id}">
+                            <h4>Comments:</h4>
+                            <ul class="p-0 list-unstyled">
+                                <li th:each="comment: ${post.comments}" class="card m-3">
+                                    <p th:text="${comment.content}"></p>
+                                    <p th:text="'Commented by ' + ${comment.user.firstName}"></p>
+                                    <form th:action="@{/teams/{id}/posts/{postId}/comments/{commentId}/delete(id=${team.id}, postId=${post.id}, commentId=${comment.id})}"
+                                          method="post">
+                                        <button style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
+                                                class="create-link btn-create btn-hover m-auto mb-3"
+                                                th:if="${comment.user.username} == ${#authentication.principal.username}">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                        <button style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
+                                class="reply-button create-link btn-create btn-hover m-auto mb-3">Reply
+                        </button>
+                        <div class="comment-form" style="display: none">
+                            <form th:action="@{/teams/{id}/posts/{postId}/comments/create(id=${team.id}, postId=${post.id})}"
+                                  method="post">
+                                <div class="mb-3 p-3">
+                                    <textarea name="comment-content" id="comment-content" rows="5" class="form-control"
+                                              placeholder="Comment here..." required></textarea>
+                                </div>
+                                <button type="submit"
+                                        style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
+                                        class="create-link btn-create btn-hover m-auto mb-3">Submit Comment
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 <footer th:replace="~{partials :: footer}"></footer>
