@@ -11,22 +11,24 @@
 <!--    </button>-->
 <!--</form>-->
 <div id="mySidebar" class="sidebar div1">
-    <div class="close-btn" th:onclick="closeSidebar()">×</div>
+    <div class="close-btn" style="color: white;" th:onclick="closeSidebar()">×</div>
     <div>
-        <ul>
-            <li class="list-unstyled" th:each="user : ${team.users}">
-                <button class="btn-vanilla">
+        <ul class="p-3">
+            <li class="list-unstyled p-2" th:each="user : ${team.users}">
+                <button class="btn-vanilla w-75 d-flex justify-content-around">
                     <span th:text="${user.firstName}"></span>
-                    <i class="fa-solid fa-baseball icon-action" th:onclick="'showPopup(' + ${user.id} + ')'"></i>
+                    <i class="fa-solid fa-x icon-action" th:onclick="'showPopup(' + ${user.id} + ')'"></i>
                 </button>
 <!--                <button  th:text="${user.firstName}" type="button" class="btn-vanilla" th:onclick="'showPopup(' + ${user.id} + ')'"></button>-->
                 <div th:if="${#authentication.principal.isCaptain}" th:id="'popup-' + ${user.id}" style="display:none">
-                    <h3>Remove Player</h3>
+                    <h3 style="color: white">Remove Player</h3>
                     <form th:action="@{/teams/{id}/posts/{userId}/drop(id=${team.id}, userId=${user.id})}" th:class="'removePlayerForm-' + ${user.id}" method="post">
                         <input type="hidden" name="teamId" id="teamId">
                         <input type="hidden" name="userId" id="userId">
-                        <button type="submit" class="btn btn-danger">Remove</button>
-                        <button type="button" class="btn btn-secondary" th:onclick="'hidePopup(' + ${user.id} + ')'">Cancel</button>
+                        <div class="button-container">
+                            <button type="submit" style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;" class="create-link btn-create btn-hover">Remove</button>
+                            <button type="button" style="font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;" class="create-link btn-create btn-hover" th:onclick="'hidePopup(' + ${user.id} + ')'">Cancel</button>
+                        </div>
                     </form>
                 </div>
             </li>
@@ -90,7 +92,7 @@
                             </li>
                         </ul>
                     </div>
-                    <button class="btn reply-post">Reply</button>
+                    <button class="btn reply-button reply-post">Reply</button>
                     <div class="comment-form" style="display: none">
                         <form th:action="@{/teams/{id}/posts/{postId}/comments/create(id=${team.id}, postId=${post.id})}" method="post">
                             <div class="mb-3">

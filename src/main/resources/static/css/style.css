@@ -31,7 +31,7 @@ body {
 }
 
 li.card {
-    background-color: darkkhaki;
+    background-color: #F2E8DC;
     border: solid 1px black;
 }
 
@@ -218,7 +218,7 @@ footer p {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #FCBF49;
+    background-color: #003049;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
