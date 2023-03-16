@@ -93,11 +93,11 @@ hbBtn.addEventListener('click', () => {
 });
 
 function timestamp() {
-    let date = $(".timestamp").text();
+    let date = $(this).text();
     console.log(date);
     let formattedDate = date.substring(0, date.length - 13);
     console.log(formattedDate);
-    $(".timestamp").html(formattedDate);
+    $(this).html(formattedDate);
 }
 
 $(document).ready(function() {

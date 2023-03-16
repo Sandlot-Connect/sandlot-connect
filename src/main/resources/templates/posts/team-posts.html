@@ -88,7 +88,7 @@
                             <textarea th:text="${post.content}" id="post-content" name="post-content" rows="5"
                                       type="text" class="content-textarea"></textarea>
 
-                            <p id="timestamp" th:text="'Created By ' + ${post.user.firstName} + ' at ' + ${post.timestamp}"></p>
+                            <p class="timestamp" th:text="'Created By ' + ${post.user.firstName} + ' at ' + ${post.timestamp}"></p>
                             <div class="d-flex justify-content-center">
                                 <button style="display: none; font-weight: bold; z-index: 1; background-color: #FCBF49; color: black;"
                                         class="create-link btn-create btn-hover save-button"
