@@ -33,5 +33,3 @@ MYSQL
 Bootstrap
 
 
-Contact
-If you have any questions or comments about Sandlot Connect, please feel free to contact us at support@sandlotconnect.com.
