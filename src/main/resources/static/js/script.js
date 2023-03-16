@@ -89,4 +89,17 @@ const navContainer = document.getElementById('nav');
 
 hbBtn.addEventListener('click', () => {
     navContainer.classList.toggle('active');
+
+});
+
+function timestamp() {
+    let date = $(".timestamp").text();
+    console.log(date);
+    let formattedDate = date.substring(0, date.length - 13);
+    console.log(formattedDate);
+    $(".timestamp").html(formattedDate);
+}
+
+$(document).ready(function() {
+    $(".timestamp").each(timestamp);
 });
