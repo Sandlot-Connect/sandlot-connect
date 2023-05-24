@@ -7,9 +7,11 @@ The application is built using Java and Spring Boot on the back-end, with Thymel
 
 Visit our project at https://sandlotconnect.xyz:8080/
 
+![Sandlot connect video](assets/sandlot-connect-video.gif)
+
 ## Getting Started
 
-To get started with Sandlot Connect, you will ned to:
+To get started with Sandlot Connect, you will need to:
 1. Clone the repository to your local machine. Import the project to your preferred IDE. 
 2. Set up a local MySQL database. 
 3. Create an application.properties file and store the below lines. Fill in the database name, username, and password with your credentials: 
