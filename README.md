@@ -1,35 +1,45 @@
-Sandlot Connect
+# Sandlot Connect
+Sandlot Connect is a social media platform inspired by the grassroots resurgence of sandlot baseball across Texas and beyond. 
+Within this web application, users can create a new baseball team or request to join an existing team. 
+When a user creates a new team they have access to requests and can approve or dismiss requests to join the team. 
+Once on a team, members have a private space where they can make a post and communicate with group members. 
+The application is built using Java and Spring Boot on the back-end, with Thymeleaf for the front-end.
 
-Welcome to Sandlot Connect, the revolutionary social media platform designed specifically for baseball players!
+Visit our project at https://sandlotconnect.xyz:8080/
 
-Description
+## Getting Started
 
-Sandlot Connect is a user-friendly platform that allows baseball enthusiasts to browse, join, and leave teams with ease. With our powerful search tools, you can quickly filter through teams based on your skill level, age group, and location. You can easily connect with team managers and coaches to learn more about their team and get started.
+To get started with Sandlot Connect, you will ned to:
+1. Clone the repository to your local machine. Import the project to your preferred IDE. 
+2. Set up a local MySQL database. 
+3. Create an application.properties file and store the below lines. Fill in the database name, username, and password with your credentials: 
+```
+  spring.datasource.url=jdbc:mysql://localhost/'EXAMPLE_DB'?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+  spring.datasource.username='YOUR_DB_USERNAME_HERE'
+  spring.datasource.password='YOUR_DB_PASSWORD_HERE'
+  spring.jpa.hibernate.ddl-auto=update
+  spring.jpa.show-sql=true
+  spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+```
+4. Build and run the project
+5. Access the project at http://localhost:8080/
 
-Our platform also includes social features that allow you to create and join groups, share your progress and accomplishments, and challenge other players to friendly games. With Sandlot Connect, you can build a network of baseball friends, exchange tips and strategies, and engage in friendly competition with fellow players.
+## Features
+- Register as a user
+- Create a team
+- Make a post
+- Register another user
+- Request to join a team
+- Team Captain can see pending requests in the admin page and approve or dismiss
+- Users added to a team can see the team posts page and make a post or a comment
+- Team Captain can remove players from the team on the posts page
 
-Installation
-
-To install Sandlot Connect, simply clone the repository to your local machine using the following command:
-
-bash
-Copy code
-git clone https://github.com/your-username/sandlot-connect.git
-Usage
-To use Sandlot Connect, simply navigate to the repository on your local machine and open the index.html file in your web browser. From there, you can browse and filter through teams, join groups, and connect with other players.
-
-Contributing
-
-If you're interested in contributing to Sandlot Connect, feel free to fork the repository and submit a pull request. We welcome all contributions that align with our vision of creating a safe and inclusive environment for all baseball players.
-
-Technologies Used
-
-Java
-Javascript
-CSS
-HTML
-Thymeleaf
-MYSQL
-Bootstrap
-
-
+## Technologies Used
+- Java
+- Javascript
+- Spring Boot
+- Thymeleaf
+- CSS
+- HTML
+- MYSQL
+- Bootstrap
